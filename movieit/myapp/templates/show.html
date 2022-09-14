@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-입원 환자 데이터를 입력해 생사 여부 확인을 위한 자료 입력
+<div style="width:auto; margin:20px;">
+{% include 'includes/navbar.html' %}
+
 <pre>
 	KIM = 김호중 컴백 무비 빛이 나는 사람 PART 1. 다시 당신 곁으로
 	NOPE = 놉
@@ -60,5 +63,7 @@
   </tr>
 </table>
 </form>
+{% include 'includes/footer.html' %}
+</div>
 </body>
 </html>
