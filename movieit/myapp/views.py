@@ -17,7 +17,7 @@ def inputFunc(request):
     return render(request, 'show.html')
 
 def recommend_movie(request):
-    movie_data = pd.read_csv('pypro3/movieit/movie_naver.csv')
+    movie_data = pd.read_csv('C:/Users/yoonam.YOONAM/OneDrive/바탕 화면/movie_naver.csv')
 
     KIM = int(request.POST.get('KIM'))
     NOPE = int(request.POST.get('NOPE'))
@@ -86,8 +86,8 @@ def recommend_movie(request):
     # 상위 3개만 출력
     context = {'recommend':recommend.iloc[:3,:]}
     
-    return render(request, 'list.html', context)
-    
+    # return render(request, 'list.html', context)
+    return render(request, 'word.html', context)
     
 
 
