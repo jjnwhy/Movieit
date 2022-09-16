@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{{data_one.title}}</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body style="margin:20px">
+<h2>{{data_one.id}}번 게시글 내용</h2>
+<table classes="table">
+	<tr style="width:95%">
+		<td style="text-align:right; width:95%">
+			<a href="/qna/reply?id={{data_one.id}}">댓글</a>
+			<a href="/qna/update?id={{data_one.id}}">수정</a>
+			<a href="/qna/delete?id={{data_one.id}}">삭제</a>
+			<a href="/qna/list?page={{page}}">목록보기</a>
+		</td>
+	</tr>
+</table>
+<table class='table'>
+	<tr style="width:95%; background-color:lightgray;">
+		<td>
+			작성자: <a href="mailto:{{data_one.mail}}">{{data_one.name}}</a>
+			(ip: {{data_one.bip}})
+		</td>
+		<td>
+			작성일: {{data_one.bdate}}
+		</td>
+		<td>
+			조회수: {{data_one.readcnt}}
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" style="width:99%">제목:{{data_one.title}}</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<textarea readonly='readonly' style="width:100%" rows="5">{{data_one.cont}}</textarea>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>
