@@ -13,10 +13,12 @@
       font-family: 'Nanum Gothic', sans-serif;
    }
    .container{
-   		width:80%;
+   		width:60%;
    }
-   td{
-   	width:30px;
+
+   
+   th, td{
+   	font-size:15px;
    }
    
    h3{
@@ -25,11 +27,9 @@
 </style>
 </head>
 <body>
-<div style="width:auto; margin:20px;">
+<div style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<br />
-<h3><b>아래 영화 중</b></h3>
-<h3><b>관람하셨던 영화의 평점을 기입해주세요.(0~10점사이)</b></h3>
+
 <!--  
 <pre style="font-size:14px; font-family:나눔고딕;">
 	KIM = 김호중 컴백 무비 빛이 나는 사람 PART 1. 다시 당신 곁으로
@@ -52,6 +52,8 @@
 -->
 <br>
 <div class="container">
+<p><b>아래 영화 중에서 관람하셨던 영화의 평점을 기입해주세요.(0~10점 사이)</b></p>
+<br />
 <form action="/recommend_movie" method="post">{% csrf_token %}
 <table class="table table-borderless">
   <tr>
@@ -86,7 +88,7 @@
   </tr>
   <tr>
   	<td colspan="8" style="text-align: center">
-  		<input class="btn btn-primary" type="submit" value="확인">
+  		<input class="btn btn-primary" type="submit" value="영화 추천 받기">
   	</td>
   </tr>
 </table>

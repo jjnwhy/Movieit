@@ -12,16 +12,22 @@
    *{
       font-family: 'Nanum Gothic', sans-serif;
    }
-   
+   #body-content{
+   	margin-left: 27px;
+   }
+   p{
+   	font-size: 20px;
+   }
    
    
 </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
-<div id="body-wrapper" style="width:auto; margin:20px;">
+<div id="body-wrapper" style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
+<br />
 <div id="body-content">
-	<h2>*현재 상영중인 영화 리스트*</h2>
+	<p><b>현재 상영작</b></p>
 	{% for data in file %}
 	<img src="{{data}}" alt="" />
 	{% endfor %}
