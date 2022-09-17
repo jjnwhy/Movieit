@@ -16,12 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
-from views import view01, view02
+from views import view01, view02, view1, view2
 from myapp import views
-
-
-from django.urls.conf import include 
 from views import view1
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view02.mainFunc),
@@ -30,8 +29,8 @@ urlpatterns = [
     path('input', views.inputFunc),
     path('input/', include('myapp.urls')),
     path('recommend_movie', views.recommend_movie),
-    path('',view1.mainFunc),
-    path('',include('myqna.urls'))
-    
+    path('qna', view1.listFunc),
+    path('qna/',include('myqna.urls')),
+
 ] 
 
