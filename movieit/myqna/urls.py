@@ -1,5 +1,5 @@
 from django.urls import path
-from views import view1,view2
+from views import view1, view2
 
 urlpatterns = [
     path('list',view1.listFunc),
