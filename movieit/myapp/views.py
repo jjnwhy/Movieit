@@ -10,8 +10,8 @@ import pandas as pd
 import seaborn as sns
 
 
-def mainFunc(request):
-    return render(request, 'main.html')
+# def mainFunc(request):
+#     return render(request, 'main.html')
 
 def inputFunc(request):
     return render(request, 'show.html')
@@ -84,7 +84,7 @@ def recommend_movie(request):
     print('rec4', recommend)
     
     # 상위 3개만 출력
-    context = {'recommend':recommend.iloc[:3,:]}
+    context = {'recommend':recommend.iloc[0:3,:]}
     
     # return render(request, 'list.html', context)
     return render(request, 'word.html', context)
