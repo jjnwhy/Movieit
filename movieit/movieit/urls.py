@@ -31,7 +31,7 @@ urlpatterns = [
     path('input/', include('myapp.urls')),
     path('recommend_movie', views.recommend_movie),
     path('',view1.mainFunc),
-    path('qna/',include('myqna.urls'))
+    path('',include('myqna.urls'))
     
 ] 
 

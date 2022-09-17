@@ -84,10 +84,13 @@ def recommend_movie(request):
     print('rec4', recommend)
     
     # 상위 3개만 출력
-    context = {'recommend':recommend.iloc[0:3,:]}
-    
-    # return render(request, 'list.html', context)
-    return render(request, 'word.html', context)
+    recommend=recommend.iloc[:3,:] 
+    title=recommend['영화제목'].to_list()
+    print('rec4', recommend)
+
+    context = {'title':title}
+
+    return render(request, 'list.html', context)
     
 
 
