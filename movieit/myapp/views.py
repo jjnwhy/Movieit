@@ -50,7 +50,7 @@ def recommend_movie(request):
     matrix = con_data.to_numpy()
     user_ratings_mean = np.mean(matrix, axis=1)
     matrix_user_mean = matrix - user_ratings_mean.reshape(-1,1)
-    U, sigma, Vt = svds(matrix_user_mean, k = 10)
+    U, sigma, Vt = svds(matrix_user_mean, k = 13)
     sigma = np.diag(sigma)
     svd_user_predicted_ratings = np.dot(np.dot(U, sigma), Vt) + user_ratings_mean.reshape(-1, 1)
     df_svd_preds = pd.DataFrame(svd_user_predicted_ratings, columns = con_data.columns)
