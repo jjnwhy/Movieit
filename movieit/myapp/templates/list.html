@@ -5,8 +5,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-예측 결과 : {{recommend}}
+<div style="width:auto; margin:20px;">
+{% include 'includes/navbar.html' %}
+<div class="wrapper">
+<h4>추천 영화</h4>
+{{recommend}}
 <br>
-
+</div>
+{% include 'includes/footer.html' %}
+</div>
 </body>
 </html>
