@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>삭제</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script type="text/javascript">
+window.onload = function(){
+	document.querySelector("#btnDel").onclick = function(){
+		if(document.querySelector("#del_passwd").value != "admin"){
+			if(document.querySelector('span').style.display == "none"){
+				document.querySelector('span').style.display = "block";
+				delfrm.del_passwd.focus();
+				return;
+			}
+		}
+		delfrm.submit();
+	}
+}
+</script>
+</head>
+<body>
+<h2>** 게시글 삭제 **</h2>
+<form action="/notice/deleteok" method="post" name="delfrm">{%csrf_token%}
+	<input type="hidden" name='id' value="{{data.id}}" />
+	<table style="width:95%" class="table">
+		<tr>
+			<th colspan="2">삭제하려면 비밀번호를 입력하세요</th>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td><input type="text" name="del_passwd" id="del_passwd" />
+				<span style="color:red; display:none;">비밀번호를 다시 입력하세요</span>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="삭제" id="btnDel" />&nbsp;
+				<input type="button" value="이전" onclick="history.back();"/>
+			</td>
+		</tr>
+	</table>
+</form>
+
+</body>
+</html>
