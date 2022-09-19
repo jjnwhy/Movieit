@@ -9,11 +9,19 @@
 <body>
 <div style="width:auto; margin:20px;">
 {% include 'includes/navbar.html' %}
-<div class="wrapper">
-<h4>추천 영화</h4>
-{{recommend}}
-<br>
-</div>
+</head>
+<body>
+	<h3> 이런 영화는 어떠세요? </h3><hr>
+
+	<div class="row">
+	{% for t in title %}
+		<div class="col-lg-4 col-sm-6">
+				<h3>{{t.title}}</h3>
+					<p><a class="btn btn-secondary" href="movie/detail?title={{t.title}}">상세 정보 &raquo;</a></p>
+		</div><!-- /.col-lg-4 -->
+	{% endfor %}
+	</div>
+
 {% include 'includes/footer.html' %}
 </div>
 </body>

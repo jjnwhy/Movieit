@@ -18,7 +18,7 @@ from django.urls import path
 from django.urls.conf import include
 from views import view01, view02, view1, view2
 from myapp import views
- 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view02.mainFunc),
@@ -28,5 +28,7 @@ urlpatterns = [
     path('input/', include('myapp.urls')),
     path('recommend_movie', views.recommend_movie),
     path('qna', view1.listFunc),
-    path('qna/',include('myqna.urls')),
+    path('qna/',include('myqna.urls')), 
+
 ] 
+
