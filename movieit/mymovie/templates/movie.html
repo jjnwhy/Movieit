@@ -3,8 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style>
+	.table-responsive{
+		width:95%
+	}
+	/*movie safe 로 받은 데이터프레임 클래스*/
+	.dataframe{
+		border:0; 
+		width: 60%;
+		float: right;
+	}
+	/*테이블 영화제목,개봉,장르 등 th의 넓이*/
+	.dataframe > tbody > tr> th{
+		width: 10%; 
+	}
+</style>
 </head>
 <body>
-{{movie|safe}}
+<div style="width:auto; margin:20px;">
+{% include 'includes/navbar.html' %}
+	<div class="table-responsive" >
+		<table class="table">{{movie|safe}}</table>
+	</div>
+{% include 'includes/footer.html' %}
+</div>
 </body>
 </html>

@@ -135,7 +135,7 @@ def detailFunc(request):
     id=int(request.GET.get('id'))
     print(id)
     
-    movies=pd.read_csv('pypro3/movieit/movies.csv',header=0,)
+    movies=pd.read_csv('pypro3/movieit/movies.csv',header=0,) #경로 수정 필요
     movie=pd.DataFrame(movies.iloc[id,:])
     # print(movies)
     print(movie)
