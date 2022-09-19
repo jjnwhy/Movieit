@@ -6,17 +6,29 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <style>
 	.table-responsive{
-		width:95%
+		width:95%;
+		display:flex;
 	}
 	/*movie safe 로 받은 데이터프레임 클래스*/
 	.dataframe{
 		border:0; 
-		width: 60%;
-		float: right;
+		width: 70%; 
+	}
+	/*데이터프레임 중 필요없는 thead 안보이게 하기*/
+	.dataframe > thead{
+		display: none;  
 	}
 	/*테이블 영화제목,개봉,장르 등 th의 넓이*/
 	.dataframe > tbody > tr> th{
 		width: 10%; 
+	}
+	/*테이블 영화제목의 폰트만 수정하기*/
+	.dataframe> tbody > tr:nth-child(1) > td{
+		font-size: large;
+		font-weight: bold; 
+	}
+	.movie-image {
+		margin-right:50px;
 	}
 </style>
 </head>
@@ -24,7 +36,16 @@
 <div style="width:auto; margin:20px;">
 {% include 'includes/navbar.html' %}
 	<div class="table-responsive" >
-		<table class="table">{{movie|safe}}</table>
+			<!-- 영화 포스터 테스트 이미지 -->
+			<div class=movie-image>
+				<img id="movie-img" class="img-fluid" src="https://upload.wikimedia.org/wikipedia/ko/2/20/%ED%83%91%EA%B1%B4_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" alt="" />
+			</div>
+			{{movie|safe}}
+	</div>
+	<hr />
+	<!-- 워드클라우드 테스트 이미지 -->
+	<div class=other-image>
+		<img id="word-cloud" class="img-fluid" src='https://media.istockphoto.com/illustrations/love-you-word-in-wordcloud-text-in-shape-heart-illustration-id639832342' alt="" />
 	</div>
 {% include 'includes/footer.html' %}
 </div>
