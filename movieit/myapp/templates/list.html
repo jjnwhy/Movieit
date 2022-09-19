@@ -12,14 +12,14 @@
 <body>
 	<h3> 이런 영화는 어떠세요? </h3><hr>
 
-	<div class="row">
  	{% for key,value in title.items%}
+	<div class="row">
  		<h3>{{value}}</h3>
 		<div class="col-lg-4 col-sm-6">
 				<p><a class="btn btn-secondary" href="/movie/detail?id={{key}}">상세 정보 &raquo;</a></p>
 		</div><!-- /.col-lg-4 -->
-	{%endfor%}
 	</div>
+	{%endfor%}
 {% include 'includes/footer.html' %}
 </div>
 </body>

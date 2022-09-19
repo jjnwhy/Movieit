@@ -3,6 +3,7 @@ from mymovie.models import NoticeTab
 from datetime import datetime
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http.response import HttpResponseRedirect
+import pandas as pd
 
 
 def mainFunc(request):
@@ -129,5 +130,16 @@ def get_client_ip(request): # 수정중
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
+def detailFunc(request):
+    # myapp views에서 평점 순으로 정리한 recommend의 인덱스 가져오기 
+    id=int(request.GET.get('id'))
+    print(id)
+    
+    movies=pd.read_csv('pypro3/movieit/movies.csv',header=0,)
+    movie=pd.DataFrame(movies.iloc[id,:])
+    # print(movies)
+    print(movie)
+    context={'movie':movie.to_html()}
 
+    return render(request,'movie.html',context)
     

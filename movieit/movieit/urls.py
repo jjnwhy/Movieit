@@ -29,4 +29,6 @@ urlpatterns = [
     path('recommend_movie', views.recommend_movie),
     path('qna', view1.listFunc),
     path('qna/',include('myqna.urls')),
+    path('movie',view01.detailFunc),
+    path('movie/',include('mymovie.urls')),
 ] 

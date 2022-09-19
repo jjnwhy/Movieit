@@ -34,5 +34,8 @@ urlpatterns = [
     
     path('delete', view01.deleteFunc),
     path('deleteok', view01.deleteokFunc),
+    path('detail',view01.detailFunc),
+    
+    
     
 ]
