@@ -100,7 +100,7 @@ def updateokFunc(request):
             return render(request, 'update.html', {'data':upData})
     except Exception as e:
         print("수정자료 읽기 오류:", e)
-        return render(request, 'error.html')
+        return render(request, 'error.html', {{'msg':e}})
     return redirect('/notice')
 
 def deleteFunc(request):

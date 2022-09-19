@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상세보기</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<title>{{data_one.id}}. {{data_one.title}}</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <script type="text/javascript">
 let xhr;
 window.onload = function(){
@@ -17,19 +18,16 @@ window.onload = function(){
 				}
 			}
 		}
-
 		xhr.open('GET', 'contentok?id={{data_one.id}}', true);
 		xhr.send();
 		
 		window.location.reload();
-	
 	}
 }
-
-
 </script>
 </head>
-<body>
+<body style="margin:20px;">
+{% include 'includes/navbar.html' %}
 <div style="margin:20px">
 	<h2>** {{data_one.id}}번 게시글 내용</h2>
 	<table class="table">
@@ -63,6 +61,6 @@ window.onload = function(){
 		</tr>
 	</table>
 </div>
-
+{% include 'includes/footer.html' %}
 </body>
 </html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Q&A 작성하기</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script type="text/javascript">  
+window.onload = function(){
+	document.getElementById("btnOk").onclick = chkFunc; 
+}
+function chkFunc(){
+	// modal 사용하기 (alert 수정할것?)
+	if(frm.name.value === ""){
+		//alert("작성자를 입력하시오");
+		//frm.name.focus();
+		//return;
+		if(document.querySelector('#idspan').style.display === "none"){
+			document.querySelector('#idspan').style.display = "block";
+			frm.id.focus();
+			return;
+		}
+	}
+	if(frm.passwd.value === ""){
+		if(document.querySelector('#pwspan').style.display === "none"){
+			document.querySelector('#pwspan').style.display = "block";
+			frm.passwd.focus();
+			return;
+		}
+	}
+	frm.submit();
+	
+}
+
+</script>
+</head>
+<body style="margin:20px;">
+{% include 'includes/navbar.html' %}
+
+<form action="/qna/insertok" method="post" name="frm" style="margin:100px; padding:20px; text-align:center;">{% csrf_token %}
+<h2>Q&A 작성</h2>
+<div class="input-group mb-3" >
+    <span class="input-group-text">작성자</span>
+    <input type="text" name='name' class="form-control">
+    <span id="idspan" style="color:red; display: none;" >&nbsp;&nbsp;작성자를 입력하세요.</span>
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text">비밀번호</span>
+    <input type="password" name='passwd' class="form-control" >
+    <span id="pwspan" style="color:red; display: none;" >&nbsp;&nbsp;비밀번호를 입력하세요.</span>
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text">이메일</span>
+    <input type="text" name="mail" class="form-control">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text">제목</span>
+    <input type="text" name="title" class="form-control">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text">내용</span>
+    <textarea class="form-control" name="cont" id="cont" style="height: 100px"></textarea>
+</div>
+
+<input type="button" value="등록" id="btnOk" class="btn btn-dark" />
+<input type="button" value="이전" onclick="history.back();" class="btn btn-light" name="btn" />
+</form>
+
+
+{% include 'includes/footer.html' %}
+</body>
+</html>

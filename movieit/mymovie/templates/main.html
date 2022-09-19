@@ -2,17 +2,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<title>Movit Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
-<div id="body-wrapper" style="width:auto; margin:20px;">
+<div style="width:auto; margin:20px; ">
 {% include 'includes/navbar.html' %}
-<div id="body-content" >
+<div>
 	<h2>*현재 상영중인 영화 리스트*</h2>
+
+	<div class="row row-cols-1 row-cols-md-5 g-4" style="padding:150px;">
+	
+	{% for data in file %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{data}}" class="card-img-top" alt="...">
+    </div>
+  </div>
+    {% endfor %}
+  	
+	
+	<!-- 
 	{% for data in file %}
 	<img src="{{data}}" alt="" />
-	{% endfor %}
+	{% endfor %} -->
 </div> 
 </div>
 {% include 'includes/footer.html' %}

@@ -43,6 +43,16 @@ def mainFunc(request):
         file.append('./static/image/Rank'+f'{i}'+'.png')
     print(file)
     
+    title = []
+    # data = pd.read_csv("C:/Users/jny/Desktop/GitRepository/Movieit/movieit/mymovie/static/movie_summary.csv", encoding='unicode_escape')
+    # print(data.head(3))
+    path = "C:/Users/jny/Desktop/GitRepository/Movieit/movieit/mymovie/static/movie_summary.csv"
+
+    data = pd.read_excel(path)
+    title = []
+    for t in data['영화제목']:
+        title.append(t)
+    print(title)
     
-    return render(request, 'main.html', {'file':file})
+    return render(request, 'main.html', {'file':file, 'title':title})
         
