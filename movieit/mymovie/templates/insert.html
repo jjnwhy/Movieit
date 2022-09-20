@@ -5,6 +5,25 @@
 <title>공지사항 작성하기</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<style>
+   *{
+      font-family: 'Nanum Gothic', sans-serif;
+   }
+   th, td{
+   	font-size:15px;
+   }
+   
+   p{
+   	font-size: 23px;
+   }
+   
+
+</style>
+
+
 <script type="text/javascript">
 window.onload = function(){
 	document.querySelector("#btnok").onclick = function(){
@@ -22,36 +41,38 @@ window.onload = function(){
 }
 </script>
 </head>
-<body style="margin:20px;">
+<body style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-
-<form action="/notice/insertok" method="post" name="insertfrm" style="margin:100px; padding:20px; text-align:center;">{%csrf_token%}
-<h2>공지사항 작성</h2>
+<br />
+<br />
+<form action="/notice/insertok" method="post" name="insertfrm" style="width:60%; margin:auto; text-align:center;">{%csrf_token%}
+<p><b>공지사항 작성</b></p>
+<br />
 <input type="hidden" name="name" value="관리자" />
 
 <div class="input-group mb-3" >
-    <span class="input-group-text">작성자</span>
-    <input type="text" name='name' class="form-control" value="관리자" disabled style="background-color:white;">
+    <span style="font-size:14px" class="input-group-text">작성자</span>
+    <input type="text" name='name' class="form-control" value="관리자" disabled style="background-color:white; font-size:14px;">
 </div>
 
 <div class="input-group mb-3">
-    <span class="input-group-text">비밀번호</span>
-    <input type="password" name="passwd" id="passwd" class="form-control" >
-    <span id="span" style="color:red; display: none;" >&nbsp;&nbsp;관리자계정이 아닙니다.</span>
+    <span style="font-size:14px" class="input-group-text">비밀번호</span>
+    <input style="font-size:14px" type="password" name="passwd" id="passwd" class="form-control" >
+    <span id="span" style="color:red; display: none; font-size:14px;" >&nbsp;&nbsp;관리자계정이 아닙니다.</span>
 </div>
 
 <div class="input-group mb-3">
-    <span class="input-group-text">제목</span>
-    <input type="text" name="title" class="form-control">
+    <span style="font-size:14px" class="input-group-text">제목</span>
+    <input style="font-size:14px" type="text" name="title" class="form-control">
 </div>
 
 <div class="input-group mb-3">
-    <span class="input-group-text">내용</span>
-    <textarea class="form-control" name="cont" id="cont" style="height: 100px"></textarea>
+    <span style="font-size:14px" class="input-group-text">내용</span>
+    <textarea class="form-control" name="cont" id="cont" style="height: 100px; font-size:14px;"></textarea>
 </div>
 
-<input type="button" value="등록" id="btnok" class="btn btn-dark" />
-<input type="button" value="이전" onclick="history.back();" class="btn btn-light" />
+<input style="font-size:14px" type="button" value="등록" id="btnok" class="btn btn-dark" />
+<input style="font-size:14px" type="button" value="이전" onclick="history.back();" class="btn btn-light" />
 </form>
 {% include 'includes/footer.html' %}
 </body>
