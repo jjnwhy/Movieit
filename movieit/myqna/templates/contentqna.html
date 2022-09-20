@@ -12,44 +12,71 @@
    *{
       font-family: 'Nanum Gothic', sans-serif;
    }
+   
+   th, td{
+   	font-size:15px;
+   	vertical-align:middle;
+   	text-align:left;
+   }
+   
+   p{
+   	font-size: 20px;
+   }
+   
+   td > a{
+  text-decoration: none;
+  color: black;
+}
 </style>
-
 </head>
-<body style="margin:20px; margin:20px; text-align:center;">
+<body>
+<div style="margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<p><b>{{data_one.id}}번 게시글 내용</b></p>
-<table classes="table">
-	<tr style="width:95%">
-		<td style="text-align:right; width:95%">
-			<a href="/qna/reply?id={{data_one.id}}">댓글</a>
-			<a href="/qna/update?id={{data_one.id}}">수정</a>
-			<a href="/qna/delete?id={{data_one.id}}">삭제</a>
-			<a href="/qna/list?page={{page}}">목록보기</a>
-		</td>
-	</tr>
+<br />
+<br />
+<div class="container" style="width:70%">
+	<p><b>{{data_one.id}}번 게시글</b></p>
+	<table style="width:80%; margin:auto" class="table">
+		<tr>
+			<td style="text-align:right; width:90%">
+				<a href="/qna/reply?id={{data_one.id}}">댓글</a>
+				<a href="/qna/update?id={{data_one.id}}">수정</a>
+				<a href="/qna/delete?id={{data_one.id}}">삭제</a>
+				<a href="/qna/list?page={{page}}">목록</a>
+			</td>
+		</tr>
+	</table>
+	<table style="width:80%; margin:auto" class="table">
+		<!-- 
+		<tr style="background-color:lightgray;">
+			<td>
+				작성자: <a href="mailto:{{data_one.mail}}">{{data_one.name}}</a>
+				(ip: {{data_one.bip}})
+			</td>
+			<td>
+				작성일: {{data_one.bdate}}
+			</td>
+			<td>
+				조회수: {{data_one.readcnt}}
+			</td>
+		</tr>
+		-->
+		<tr style="background-color:#E6E6E6;">
+			<th>작성자<td><a href="mailto:{{data_one.mail}}">{{data_one.name}}</a>(ip: {{data_one.bip}})</td></th>
+         	<th>작성일<td>{{data_one.bdate}}</td></th>
+         	<th>조회수<td>{{data_one.readcnt}}</td></th>   
+		</tr>
+		<tr>
+			<td colspan="6" style="text-align:center; font-size:17px;"><b>{{data_one.title}}</b></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<textarea readonly='readonly' style="width:100%" rows="5">{{data_one.cont}}</textarea>
+			</td>
+		</tr>
 </table>
-<table class='table'>
-	<tr style="width:95%; background-color:lightgray;">
-		<td>
-			작성자: <a href="mailto:{{data_one.mail}}">{{data_one.name}}</a>
-			(ip: {{data_one.bip}})
-		</td>
-		<td>
-			작성일: {{data_one.bdate}}
-		</td>
-		<td>
-			조회수: {{data_one.readcnt}}
-		</td>
-	</tr>
-	<tr>
-		<td colspan="3" style="width:99%">제목:{{data_one.title}}</td>
-	</tr>
-	<tr>
-		<td colspan="3">
-			<textarea readonly='readonly' style="width:100%" rows="5">{{data_one.cont}}</textarea>
-		</td>
-	</tr>
-</table>
+</div>
 {% include 'includes/footer.html' %}
+</div>
 </body>
 </html>

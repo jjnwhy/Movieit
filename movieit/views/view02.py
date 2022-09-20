@@ -46,7 +46,7 @@ def mainFunc(request):
     title = []
     # data = pd.read_csv("C:/Users/jny/Desktop/GitRepository/Movieit/movieit/mymovie/static/movie_summary.csv", encoding='unicode_escape')
     # print(data.head(3))
-    path = "C:/Users/jny/Desktop/GitRepository/Movieit/movieit/mymovie/static/movie_summary.csv"
+    path = "./movies파일/movies.csv"
 
     data = pd.read_excel(path)
     title = []

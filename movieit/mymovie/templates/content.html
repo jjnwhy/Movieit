@@ -48,10 +48,7 @@ window.onload = function(){
    	font-size: 20px;
    }
    
-   table{
-   		margin-left:120px;	
-   }
-   
+
    td > a{
   text-decoration: none;
   color: black;
@@ -63,23 +60,24 @@ window.onload = function(){
 	}
 	
 	#btnlike:hover{
-		transform: scale(1.25);
-		transition: all 0.2s ease-in-out; 
+		transform: scale(1.2);
+		transition: all 0.1s ease-in-out; 
 		
 	}
 	
 	#btnlike{
-		transition-duration: 0.2s;
+		transition-duration: 0.1s;
 	}
 </style>
 </head>
 <body>
-<div style="width:auto; margin:20px; text-align:center;">
+<div style="margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
 <br />
-<div class="container">
+<br />
+<div class="container" style="margin:auto">
    <p><b>{{data_one.id}}번 게시글</b></p>
-   <table style="width:80%" class="table">
+   <table style="width:80%; margin:auto" class="table">
       <tr>
          <td style="text-align:right; width:90%">
             <a href="/notice/update?id={{data_one.id}}">수정 </a>
@@ -88,7 +86,7 @@ window.onload = function(){
          </td>
       </tr>
    </table>
-   <table style="width:80%" class="table">
+   <table style="width:80%; margin:auto" class="table">
       <!-- 
       <tr>
          <th>작성자 : {{data_one.name}}</th>
@@ -103,7 +101,7 @@ window.onload = function(){
          <th>조회수<td>{{data_one.readcnt}}</td></th>   
       </tr>
       <tr>
-         <th colspan="4" style="text-align:middle">{{data_one.title}}</th>
+         <th colspan="4" style="text-align:middle; font-size:17px;">{{data_one.title}}</th>
          <th colspan="2" style="text-align:middle">
             <!-- <button class="btn btn-primary" id="btnlike" value="좋아요 : {{data_one.likecnt}}">좋아요 : {{data_one.likecnt}}</button> -->
             <!-- <input type="button" value="좋아요 : {{data_one.likecnt}}" id="btnlike" /> -->
