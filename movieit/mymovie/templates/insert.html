@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항 작성하기</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script type="text/javascript">
+window.onload = function(){
+	document.querySelector("#btnok").onclick = function(){
+		if(insertfrm.passwd.value != "admin"){
+			if(document.querySelector('span').style.display == "none"){
+				document.querySelector('span').style.display = "block";
+				insertfrm.passwd.focus();
+				return;
+			}
+		}
+		insertfrm.submit();
+	}
+	
+}
+</script>
+</head>
+<body>
+<div style="width:95%">
+<h2>** 새 공지사항 작성 **</h2>
+<form action="/notice/insertok" method="post" name="insertfrm">{%csrf_token%}
+<table class="table" style="width:95%">
+<input type="hidden" name="name" value="관리자" />
+	<tr>
+		<td>작성자</td>
+		<td><input type="text" name="name" value="관리자" disabled/></td>
+	</tr>
+	<tr>
+		<td>비밀번호</td>
+		<td><input type="text" name="passwd" />
+		<span name="span" style="color:red; display: none;" >관리자계정이 아닙니다.</span>
+		</td>
+	</tr>
+	<tr>
+		<td>제목</td>
+		<td><input type="text" name="title" /></td>
+	</tr>
+	<tr>
+		<td>내용</td>
+		<td><textarea name="cont" id="cont" style="width:95%" rows="10"></textarea></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align:center;">
+			<input type="button" value="등록" id="btnok" />
+			<input type="button" value="이전" onclick="history.back();" />
+		</td>
+	</tr>
+</table>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div style="width:auto; margin:20px;">
+{% include 'includes/navbar.html' %}
+<h2>** 공지사항 페이지 **</h2>
+<a href="/notice/insert">글 작성하기</a>
+
+<table style='width:95%' class="table">
+	<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>작성일</th>
+		<th>조회수</th>
+		<th>좋아요</th>
+	</tr>
+	{% if datas %}
+	{% for d in datas %}
+	<tr>
+		<td>{{d.id}}</td>
+		<td><a href="/notice/content?id={{d.id}}&page={{datas.number}}">{{d.title}}</a></td>
+		<td>{{d.name}}</td>
+		<td>{{d.ndate}}</td>
+		<td>{{d.readcnt}}</td>
+		<td>{{d.likecnt}}</td>
+	</tr>
+	{% endfor %}
+	<!-- 페이징 처리 -->
+	<tr>
+		<td colspan="6" style="text-align:center;">
+		<div>
+		{% if datas.has_previous %}
+			<a href="/notice/main?page={{datas.previous_page_number}}">&laquo;이전</a>
+		{% endif %}
+		&nbsp;&nbsp;
+		( {{datas.number }} / {{datas.paginator.num_pages}} )
+		&nbsp;&nbsp;
+		{% if datas.has_next %}
+			<a href="/notice/main?page={{datas.next_page_number}}">다음&raquo;</a>
+		{% endif %}
+		</div>
+		</td>
+	</tr>
+	{% else %}
+	<tr>
+		<td colspan="6">글이 없습니다.</td>
+	</tr>
+	{% endif %}
+	<!-- 검색 -->
+	<tr>
+		<td colspan="6" style="text-align:center;">
+			<form action="/notice/search" method="post">{%csrf_token%}
+				<select name="s_type" id="s_type">
+					<option value="title" selected>제목</option>
+					<option value="name">작성자</option>
+				</select>
+				<input type="text" name="s_value" />
+				<input type="submit" value="검색" />
+			</form>
+		</td>
+	</tr>
+</table>
+{% include 'includes/footer.html' %}
+</div>
+</body>
+</html>

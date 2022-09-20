@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>수정</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script type="text/javascript">
+window.onload = function(){
+	document.querySelector("#btnUpdate").onclick = function(){
+		if(upfrm.up_passwd != "admin"){
+			if(document.querySelector("span").style.display === "none"){
+				document.querySelector("span").style.display = "block";
+				upfrm.up_passwd.focus();
+				return;
+			}
+		}
+		upfrm.submit();
+	}
+}
+</script>
+</head>
+<body>
+<h2>** 게시글 수정 **</h2>
+<form action="/notice/updateok" method="post" name="upfrm">{%csrf_token%}
+
+	<table style="width:95%" class="table">
+	<input type="hidden" name="id" value="{{data.id}}" />
+	<input type="hidden" name="name" value="{{data.name}}" />
+		<tr>
+			<td>작성자</td>
+			<td><input type="text" name="name" value="{{data.name}}" disabled /></td>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td><input type="text" name="up_passwd" />
+				<span style="color:red; display:none;">비밀번호를 다시 입력하세요</span>
+			</td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td><input type="text" name="title" value="{{data.title}}" /></td>
+		</tr>
+		<tr>
+			<td>내용</td>
+			<td><textarea name="cont" id="cont" cols="30" rows="10">{{data.cont}}</textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;">
+				<input type="button" value="수정" id="btnUpdate" />
+				<input type="button" value="이전" onclick="history.back();" />
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-입원 환자 데이터를 입력해 생사 여부 확인을 위한 자료 입력
+<div style="width:auto; margin:20px;">
+{% include 'includes/navbar.html' %}
+
 <pre>
 	KIM = 김호중 컴백 무비 빛이 나는 사람 PART 1. 다시 당신 곁으로
 	NOPE = 놉
@@ -27,8 +30,16 @@
 <br>
 <form action="/recommend_movie" method="post">{% csrf_token %}
 <table border="1">
+	<caption>평점 남기기</caption>
   <tr>
-  	<th>KIM</th><th>NOPE</th><th>LIMIT</th><th>BULLET</th><th>EMERGE</th><th>WILOVE</th><th>SEOUL</th><th>ERROR</th>
+  	<th>KIM</th>
+  	<th>NOPE</th>
+  	<th>LIMIT</th>
+  	<th>BULLET</th>
+  	<th>EMERGE</th>
+  	<th>WILOVE</th>
+  	<th>SEOUL</th>
+  	<th>ERROR</th>
   	
   </tr>
   <tr>
@@ -42,7 +53,13 @@
     <td><input type="text" name="ERROR" value="0" size="2"></td>
   </tr>  
   <tr>
-    <th>ALIEN</th><th>LOTTO</th><th>CARTER</th><th>TOP</th><th>HAN</th><th>HUNT</th><th>LEAVE</th>
+    <th>ALIEN</th>
+    <th>LOTTO</th>
+    <th>CARTER</th>
+    <th>TOP</th>
+    <th>HAN</th>
+    <th>HUNT</th>
+    <th>LEAVE</th>
   </tr>
   <tr>
     <td><input type="text" name="ALIEN" value="0" size="2"></td>
@@ -60,5 +77,7 @@
   </tr>
 </table>
 </form>
+{% include 'includes/footer.html' %}
+</div>
 </body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상세보기</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script type="text/javascript">
+let xhr;
+window.onload = function(){
+	document.querySelector("#btnlike").onclick = function(){
+		xhr = new XMLHttpRequest();
+		 
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === XMLHttpRequest.DONE){
+				if(xhr.status === 200){
+					//document.getElementById('btnlike').disabled = true;
+				}
+			}
+		}
+
+		xhr.open('GET', 'contentok?id={{data_one.id}}', true);
+		xhr.send();
+		
+		window.location.reload();
+	
+	}
+}
+
+
+</script>
+</head>
+<body>
+<div style="margin:20px">
+	<h2>** {{data_one.id}}번 게시글 내용</h2>
+	<table class="table">
+		<tr style="width:95%">
+			<td style="text-align:right; width:95%">
+				<a href="/notice/update?id={{data_one.id}}">수정</a>
+				<a href="/notice/delete?id={{data_one.id}}">삭제</a>
+				<a href="/notice">목록</a>
+			</td>
+		</tr>
+	</table>
+	<table class="table">
+		<tr style="width:95%">
+			<td>작성자 : {{data_one.name}}</td>
+			<td>작성일 : {{data_one.ndate}}</td>
+			<td>조회수 : {{data_one.readcnt}}</td>
+			<td>
+				<button id="btnlike" value="좋아요 : {{data_one.likecnt}}">좋아요 : {{data_one.likecnt}}</button>
+				<!-- <input type="button" value="좋아요 : {{data_one.likecnt}}" id="btnlike" /> -->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">제목 : {{data_one.title}}</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				
+				<textarea name="cont" id="cont" style="width:100%" rows="10" readonly="readonly">{{data_one.cont}}</textarea>
+				
+			</td>
+		</tr>
+	</table>
+</div>
+
+</body>
+</html>
