@@ -45,8 +45,8 @@ window.onload = function(){
 <!-- 수정할 번호도 함께 전송 -->
 <form action="/qna/updateok" method="post" name="upfrm" style="width:60%; margin:auto; text-align:center;">{% csrf_token %}
 <p><b>수정하기</b></p>
+<br />
 <input type="hidden" name='id' value='{{data_one.id}}' />
-
 <div class="input-group mb-3">
     <span style="font-size:14px; display: inline-block; width: 80px;" class="input-group-text">작성자</span>
     <input style="font-size:14px" type="text" class="form-control" name='name' value="{{data_one.name}}">
