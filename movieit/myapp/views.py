@@ -17,7 +17,11 @@ def inputFunc(request):
     return render(request, 'show.html')
 
 def recommend_movie(request):
-    movie_data = pd.read_csv('pypro3/movieit/movie_naver.csv') #경로 수정 필요
+    #로컬 경로
+    # movie_data = pd.read_csv('pypro3/movieit/movie_naver.csv') 
+    #깃헙 경로
+    movie_data = pd.read_csv('https://raw.githubusercontent.com/jjnwhy/Movieit/feature_sm/movies%ED%8C%8C%EC%9D%BC/movie_naver.csv')
+
 
     KIM = int(request.POST.get('KIM'))
     NOPE = int(request.POST.get('NOPE'))
