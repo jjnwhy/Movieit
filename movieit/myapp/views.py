@@ -90,11 +90,16 @@ def recommend_movie(request):
     recommend=recommend.set_index('index')
     print(recommend)
     # 3개만 추리기
-    title=recommend.iloc[:3,0].to_dict
-
-    context = {'title':title}
+    recommend=recommend.iloc[:3,0]
+    title=recommend.to_dict
+    
+    # index값을 이미지 파일명으로 쓰기 위한 경로 보내기
+    img_path="/static/images/"
+    
+    context = {'title':title,'path':img_path}
 
     return render(request, 'list.html', context)
+
     
 
 
