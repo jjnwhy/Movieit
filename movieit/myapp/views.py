@@ -17,8 +17,11 @@ def inputFunc(request):
     return render(request, 'show.html')
 
 def recommend_movie(request):
-    # movie_data = pd.read_csv('C:/Users/yoonam.YOONAM/OneDrive/바탕 화면/movie_naver.csv')
-    movie_data = pd.read_csv('pypro3/movieit/movie_naver.csv')
+    #로컬 경로
+    # movie_data = pd.read_csv('pypro3/movieit/movie_naver.csv') 
+    #깃헙 경로
+    movie_data = pd.read_csv('https://raw.githubusercontent.com/jjnwhy/Movieit/feature_sm/movies%ED%8C%8C%EC%9D%BC/movie_naver.csv')
+
 
     KIM = int(request.POST.get('KIM'))
     NOPE = int(request.POST.get('NOPE'))
@@ -78,16 +81,16 @@ def recommend_movie(request):
     recommend=recommend.merge(sorted_user.reset_index(), on ='영화제목')
     print('rec2',recommend)
     # 영화 제목과 SVD 값 출력 (평점_y에 SVD 값이 입력됨)
-    recommend=recommend[['영화제목','평점_y']]
+    recommend=recommend[['영화제목','평점_y','index']]
     print('rec3', recommend)
     # 예측한 평점 상위 순으로 정렬
     recommend=recommend.sort_values(by=['평점_y'],ascending = False)
-    print('rec4', recommend)
-    
-    # 상위 3개만 출력
-    recommend=recommend.iloc[:3,:] 
-    title=recommend['영화제목'].to_list()
-    print('rec4', recommend)
+    print(recommend)
+    # 추천 영화의 인덱스를 원래의 index 로 재설정
+    recommend=recommend.set_index('index')
+    print(recommend)
+    # 3개만 추리기
+    title=recommend.iloc[:3,0].to_dict
 
     context = {'title':title}
 
