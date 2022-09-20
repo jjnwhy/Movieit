@@ -52,8 +52,9 @@ window.onload = function(){
    		margin-left:120px;	
    }
    
-   a{
-  text-decoration-line: none;
+   td > a{
+  text-decoration: none;
+  color: black;
 }
 	#btnlike{
 		border: none;
@@ -62,13 +63,13 @@ window.onload = function(){
 	}
 	
 	#btnlike:hover{
-		transform: scale(1.2);
+		transform: scale(1.25);
 		transition: all 0.2s ease-in-out; 
 		
 	}
 	
 	#btnlike{
-		transition-duration: 0.3s
+		transition-duration: 0.2s;
 	}
 </style>
 </head>
@@ -81,8 +82,8 @@ window.onload = function(){
    <table style="width:80%" class="table">
       <tr>
          <td style="text-align:right; width:90%">
-            <a href="/notice/update?id={{data_one.id}}">수정</a>
-            <a href="/notice/delete?id={{data_one.id}}">삭제</a>
+            <a href="/notice/update?id={{data_one.id}}">수정 </a>
+            <a href="/notice/delete?id={{data_one.id}}">삭제 </a>
             <a href="/notice">목록</a>
          </td>
       </tr>
