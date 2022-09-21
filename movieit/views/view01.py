@@ -101,7 +101,7 @@ def updateokFunc(request):
             return render(request, 'update.html', {'data':upData})
     except Exception as e:
         print("수정자료 읽기 오류:", e)
-        return render(request, 'error.html')
+        return render(request, 'error.html', {{'msg':e}})
     return redirect('/notice')
 
 def deleteFunc(request):
@@ -134,13 +134,21 @@ def detailFunc(request):
     # myapp views에서 평점 순으로 정리한 recommend의 인덱스 가져오기 
     id=int(request.GET.get('id'))
     print(id)
-    
-    movies=pd.read_csv('pypro3/movieit/movies.csv',header=0,)
+    # 로컬 경로
+    # movies=pd.read_csv('pypro3/movieit/movies.csv',header=0,) 
+    # 깃헙 경로
+    movies=pd.read_csv('https://raw.githubusercontent.com/jjnwhy/Movieit/feature_sm/movies%ED%8C%8C%EC%9D%BC/movies.csv',header=0,)
     movie=pd.DataFrame(movies.iloc[id,:])
     # print(movies)
     print(movie)
-    context={'movie':movie.to_html(),
+
+    # 영화 포스터 보내기
+    img_path="/static/images/Rank"+f'{id}'+".png"
+    print(img_path)
+    
+    context={'movie':movie.to_html(),'path':img_path,
              'id':id}
 
     return render(request,'movie.html',context)
+
     

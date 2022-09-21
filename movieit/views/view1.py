@@ -5,8 +5,7 @@ from django.shortcuts import render
 from myqna.models import MyqnaQna
 
 def mainFunc(request):
-    aa="<div><h2>메인</h2></div>"
-    return render(request,'main.html',{'main':aa})
+    return render(request,'main.html')
 def listFunc(request):
     # 댓글 처리
     data_all=MyqnaQna.objects.all().order_by('-gnum','onum')
@@ -23,7 +22,7 @@ def listFunc(request):
     return render(request,'board.html',{'datas':datas})
 # 글 작성
 def insertFunc(request):
-    return render(request,'insert.html')
+    return render(request,'insertqna.html')
 # 글 작성
 def insertokFunc(request):
     if request.method=='POST':
@@ -82,7 +81,7 @@ def contentFunc(request):
     data.readcnt=data.readcnt+1
     data.save() #update
    
-    return render(request,'content.html',{'data_one':data,'page':page})
+    return render(request,'contentqna.html',{'data_one':data,'page':page})
 # Qna글 수정하기
 def updateFunc(request):
     try:
@@ -91,7 +90,7 @@ def updateFunc(request):
         print('수정자료 읽기 오류:',e)
         return render(request,'error.html')
     
-    return render(request,'update.html',{'data_one':data})
+    return render(request,'updateqna.html',{'data_one':data})
     
 def updateokFunc(request):
     try:
@@ -104,7 +103,7 @@ def updateokFunc(request):
             upRec.cont=request.POST.get('cont')
             upRec.save() #update
         else:
-            return render(request,'update.html',{'data_one':upRec,'msg':'비밀번호 불일치'})
+            return render(request,'updateqna.html',{'data_one':upRec,'msg':'비밀번호 불일치'})
     except Exception as e:
         print('수정처리 오류:',e)
         return render(request,'error.html')
@@ -118,7 +117,7 @@ def deleteFunc(request):
         print('삭제자료 읽기 오류:',e)
         return render(request,'error.html')
     
-    return render(request,'delete.html',{'data_one':delData})
+    return render(request,'deleteqna.html',{'data_one':delData})
 def deleteokFunc(request):
     delData=MyqnaQna.objects.get(id=request.POST.get('id'))
     if delData.passwd == request.POST.get('del_passwd'):

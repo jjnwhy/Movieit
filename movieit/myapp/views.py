@@ -10,16 +10,17 @@ import pandas as pd
 import seaborn as sns
 
 
-def mainFunc(request):
-    return render(request, 'main.html')
+# def mainFunc(request):
+#     return render(request, 'main.html')
 
 def inputFunc(request):
     return render(request, 'show.html')
 
 def recommend_movie(request):
-    movie_data = pd.read_csv('teampro/myapp/movie_naver.csv') #경로 수정 필요
-    # teampro/myapp/movie_naver.csv
-    # pypro3/movieit/movie_naver.csv
+    #로컬 경로
+    # movie_data = pd.read_csv('pypro3/movieit/movie_naver.csv') 
+    #깃헙 경로
+    movie_data = pd.read_csv('https://raw.githubusercontent.com/jjnwhy/Movieit/feature_sm/movies%ED%8C%8C%EC%9D%BC/movie_naver.csv')
 
     KIM = int(request.POST.get('KIM'))
     NOPE = int(request.POST.get('NOPE'))
@@ -89,13 +90,16 @@ def recommend_movie(request):
     recommend=recommend.set_index('index')
     print(recommend)
     # 3개만 추리기
-    title=recommend.iloc[:3,0].to_dict
-
-    context = {'title':title}
+    recommend=recommend.iloc[:3,0]
+    title=recommend.to_dict
+    
+    # index값을 이미지 파일명으로 쓰기 위한 경로 보내기
+    img_path="/static/images/"
+    
+    context = {'title':title,'path':img_path}
 
     return render(request, 'list.html', context)
 
-    
     
 
 

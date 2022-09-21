@@ -21,4 +21,3 @@ class MyqnaQna(models.Model):
     onum = models.IntegerField()
     nested = models.IntegerField()
 
-

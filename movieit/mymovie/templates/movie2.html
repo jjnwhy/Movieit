@@ -40,19 +40,6 @@
 	margin-right: 50px;
 }
 
-* {
-	margin: 0
-}
-
-body {
-	height: 100vh;
-	width: 100%;
-}
-
-#wordcloud {
-	height: 800px;
-	width: 800px;
-}
 </style>
 </head>
 <body>
@@ -68,16 +55,12 @@ body {
 		<hr />
 
 		<!-- 워드클라우드 -->
-		<div id="wordcloud"></div>
+		<script
+			src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"
+			src="/static/js/echarts-wordcloud.js"></script>
+		<div id="wordcloud" style="height: 800px; width:800px"></div>
 
-
-		{% include 'includes/footer.html' %}
-	</div>
-	
-	<script src='https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js'></script>
-	<script src="/static/js/echarts-wordcloud.js"></script>
-
-	<script>
+		<script>
 		  window.onload = async () => {
 		  const data = await fetch("/static/words/{{id}}.json").then((response) => response.json());
 		  console.log(data)
@@ -115,12 +98,13 @@ body {
 	                  data: Object.entries(data).map(([key, value]) => { return { name: key, value };}), 
 	              },],
 		  };
-		  
-		  console.log(wordcloud)
 	      wordcloud.setOption(option);		
 	      
 		  };
 	
-	</script>
+		</script>
+
+		{% include 'includes/footer.html' %}
+	</div>
 </body>
 </html>
