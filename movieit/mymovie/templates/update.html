@@ -9,16 +9,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <style>
-   *{
-      font-family: 'Nanum Gothic', sans-serif;
-   }
-   p{
-   	font-size: 23px;
-   }
-   
-   li > a{
-  text-decoration: none;
-  color: black;
+* {
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+p {
+	font-size: 23px;
+}
+
+li>a {
+	text-decoration: none;
+	color: black;
+}
+
+ol>li {
+	font-size: 15px;
 }
 </style>
 <script type="text/javascript">
@@ -54,7 +59,7 @@ window.onload = function(){
 <body>
 <div style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<nav style="--bs-breadcrumb-divider: '>'; margin-left:15px" aria-label="breadcrumb">
+<nav style="--bs-breadcrumb-divider: '>';" margin-left:15px" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/notice">공지사항</a></li>
     <li class="breadcrumb-item"><a href="/notice/content?id={{data.id}}">공지사항 보기</a></li>

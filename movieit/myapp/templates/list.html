@@ -28,11 +28,27 @@
 	opacity:0.5;
 	transform:scale(105%)
 }
+
+li>a {
+	text-decoration: none;
+	color: black;
+}
+
+ol>li {
+	font-size: 15px;
+}
 </style>
 <body>
-<div style="width:auto; margin:20px;">
-{% include 'includes/navbar.html' %}
-<body>			
+	<div style="width: auto; margin: 20px;">
+		{% include 'includes/navbar.html' %}
+		<nav style="--bs-breadcrumb-divider: '&gt;'; margin-left: 15px"
+			aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="/input">영화추천서비스</a></li>
+				<li class="breadcrumb-item active" aria-current="page">추천영화</li>
+			</ol>
+		</nav>
+	</div>
 	<div class="container-md">
 	<h2 class="my-5" > 이런 영화는 어떠세요? </h2>
 		<div class="row md">
