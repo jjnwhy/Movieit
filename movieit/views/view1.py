@@ -78,8 +78,18 @@ def contentFunc(request):
     page=request.GET.get('page')
     data=MyqnaQna.objects.get(id=request.GET.get('id'))
     # 조회수 갱신
-    data.readcnt=data.readcnt+1
-    data.save() #update
+    # data.readcnt=data.readcnt+1
+    # data.save() #update
+    
+    if request.session.session_key is not None:
+        data.readcnt = data.readcnt
+    else:
+        data.readcnt += 1
+    
+    request.session.set_expiry(3)
+    print(request.session.session_key)
+    data.save()
+
    
     return render(request,'contentqna.html',{'data_one':data,'page':page})
 # Qna글 수정하기
