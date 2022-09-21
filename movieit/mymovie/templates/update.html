@@ -19,8 +19,8 @@
 <script type="text/javascript">
 window.onload = function(){
 	document.querySelector("#btnUpdate").onclick = function(){
-		
-		if(upfrm.up_passwd.value != "admin"){
+		if(upfrm.up_passwd.value != "admin" || upfrm.up_passwd.value === ""){
+
 			if(document.querySelector("#span").style.display === "none"){
 				document.querySelector("#span").style.display = "block";
 				upfrm.up_passwd.focus();
