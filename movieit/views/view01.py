@@ -157,7 +157,8 @@ def detailFunc(request):
     img_path="/static/images/Rank"+f'{id}'+".png"
     print(img_path)
     
-    context={'movie':movie.to_html(),'path':img_path}
+    context={'movie':movie.to_html(),'path':img_path,
+             'id':id}
     return render(request,'movie.html',context)
 
     
