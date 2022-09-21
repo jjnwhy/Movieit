@@ -20,6 +20,11 @@
    	font-size: 23px;
    }
    
+   li > a{
+  text-decoration: none;
+  color: black;
+}
+   
 
 </style> 
 <script type="text/javascript">
@@ -40,23 +45,32 @@ window.onload = function(){
 <body>
 <div style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<br />
+<div class="row justify-content-center">
+<nav style="--bs-breadcrumb-divider: '>'; width:auto;" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/notice">공지사항</a></li>
+    <li class="breadcrumb-item"><a href="/notice/content?id={{data.id}}">공지사항 보기</a></li>
+    <li class="breadcrumb-item active" aria-current="page">공지사항 삭제</li>
+  </ol>
+</nav>
+</div>
+</div>
 <br />
 <div class="container" style=text-align:center;>	
 <p><b>게시글 삭제</b></p>
 <br />
-<p style="font-size:17px">삭제하려면 비밀번호를 입력하세요</p>
+<p style="font-size:17px"><b>삭제하려면 비밀번호를 입력하세요</b></p>
 <br />
 <form action="/notice/deleteok" method="post" name="delfrm">{%csrf_token%}
 	<input type="hidden" name='id' value="{{data.id}}" />
-	<table style="width:50%; text-align:center; margin-left:auto; margin-right:auto" class="table" >
+	<table style="width:50%; text-align:center; margin:auto" class="table" >
 		<!--  
 		<tr>
 			<th colspan="2">삭제하려면 비밀번호를 입력하세요</th>
 		</tr>
 		-->
 		<tr>
-			<td style="text-align:right;">비밀번호</td>
+			<td style="text-align:right; font-size:15px">비밀번호</td>
 			<td><input type="text" name="del_passwd" id="del_passwd" />
 				<span style="color:red; display:none;">비밀번호를 다시 입력하세요</span>
 			</td>

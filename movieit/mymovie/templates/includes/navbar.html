@@ -17,14 +17,17 @@
 		font-weight:700;
 
 	}
+
 	
-	#navbarNav{
-		margin-left:30px;
+	.navbar-brand{
+		transition : transform 0.2s ease-out;
+	}
+	
+	.navbar-brand:hover{
+		transform: rotate(20deg) scale(1.2)
 	}
 </style>
 </head>
-<body>
-
 <!-- 
 	<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);">
 		 <ol class="breadcrumb">
@@ -40,13 +43,16 @@
 	</nav>
  -->	
 <!--  <div class="col-md-6 text-center">  -->
-<div class="row">
-<nav class="navbar navbar-expand">
-  <div class="container-md">
+<nav class="navbar navbar-expand-sm" >
+  <div class="container-fluid" style="width:auto; text-align:center;">
     <a class="navbar-brand" href="/" style="font-size:30px"><b>Movit  </b><svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" fill="currentColor" class="bi bi-camera-reels-fill" viewBox="0 0 16 16">
   <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+   <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
   <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7z"/>
 </svg></a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav justify-content-center">
         <li class="nav-item">
@@ -65,6 +71,4 @@
     </div>
   </div>
 </nav>
-</div>
-</body>
 </html>
