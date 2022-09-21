@@ -27,15 +27,26 @@
   text-decoration: none;
   color: black;
 }
+
+	li > a{
+  text-decoration: none;
+  color: black;
+}
 </style>
 </head>
 <body>
 <div style="margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<br />
+<nav style="--bs-breadcrumb-divider: '>'; margin-left:15px" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/qna">Q&A</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Q&A 보기</li>
+  </ol>
+</nav>
+</div>
 <br />
 <div class="container" style="width:70%">
-	<p><b>{{data_one.id}}번 게시글</b></p>
+	<p style="text-align:center;"><b>{{data_one.id}}번 게시글</b></p>
 	<table style="width:80%; margin:auto" class="table">
 		<tr>
 			<td style="text-align:right; width:90%">

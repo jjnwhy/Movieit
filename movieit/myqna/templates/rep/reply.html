@@ -20,6 +20,11 @@
    p{
    	font-size: 23px;
    }
+   
+   li > a{
+  text-decoration: none;
+  color: black;
+}
 </style>
 <script>
 window.onload=function(){
@@ -41,7 +46,14 @@ function chkFunc(){
 <body>
 <body style="margin:20px;" text-align:center;">
 {% include 'includes/navbar.html' %}
-<br />
+<nav style="--bs-breadcrumb-divider: '>'; margin-left:15px" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/qna">Q&A</a></li>
+    <li class="breadcrumb-item"><a href="/qna/content?id={{data_one.id}}&page={{data_one.gnum}}">Q&A 보기</a></li>
+    <li class="breadcrumb-item active" aria-current="page">댓글 작성</li>
+  </ol>
+</nav>
+</div>
 <br />
 <form action="/qna/replyok" style="width:60%; margin:auto; text-align:center;" name="refrm">{% csrf_token %}
 		<p><b>댓글 작성<p><b>
@@ -92,29 +104,29 @@ function chkFunc(){
 		<input type="hidden" name="nested"value={{data_one.nested}} />
 	</div>
 		<div class="input-group mb-3" >
-	    <span style="font-size:14px" class="input-group-text">작성자</span>
+	    <span style="font-size:14px; display: inline-block; width: 80px;" class="input-group-text">작성자</span>
 	    <input style="font-size:14px" type="text" name='name' class="form-control">
 	    <span id="idspan" style="color:red; display: none; font-size:14px" >&nbsp;&nbsp;작성자를 입력하세요.</span>
 	</div>
 	
 	<div class="input-group mb-3">
-	    <span style="font-size:14px" class="input-group-text">비밀번호</span>
+	    <span style="font-size:14px; display: inline-block; width: 80px;" class="input-group-text">비밀번호</span>
 	    <input style="font-size:14px" type="password" name='passwd' class="form-control" >
 	    <span id="pwspan" style="color:red; display: none; font-size:14px" >&nbsp;&nbsp;비밀번호를 입력하세요.</span>
 	</div>
 	
 	<div class="input-group mb-3">
-	    <span style="font-size:14px" class="input-group-text">이메일</span>
+	    <span style="font-size:14px; display: inline-block; width: 80px;" class="input-group-text">이메일</span>
 	    <input style="font-size:14px" type="text" name="mail" class="form-control">
 	</div>
 	
 	<div class="input-group mb-3">
-	    <span style="font-size:14px" class="input-group-text">제목</span>
+	    <span style="font-size:14px; display: inline-block; width: 80px;" class="input-group-text">제목</span>
 	    <input style="font-size:14px" type="text" name="title" class="form-control" value="[RE]{{data_one.title}}">
 	</div>
 	
 	<div class="input-group mb-3">
-	    <span style="font-size:14px" class="input-group-text">내용</span>
+	    <span style="font-size:14px; display: inline-block; width: 80px;" class="input-group-text">내용</span>
 	    <textarea class="form-control" name="cont" id="cont" style="height: 100px; font-size:14px"></textarea>
 	</div>
 	

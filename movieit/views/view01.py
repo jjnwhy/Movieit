@@ -5,7 +5,6 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http.response import HttpResponseRedirect
 import pandas as pd
 
-
 def mainFunc(request):
     data_all = NoticeTab.objects.all().order_by('-id')
     per_page = 10

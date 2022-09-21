@@ -15,6 +15,11 @@
    p{
    	font-size: 23px;
    }
+   
+   li > a{
+  text-decoration: none;
+  color: black;
+}
 </style>
 <script type="text/javascript">
 /*
@@ -49,7 +54,13 @@ window.onload = function(){
 <body>
 <div style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<br />
+<nav style="--bs-breadcrumb-divider: '>'; margin-left:15px" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/notice">공지사항</a></li>
+    <li class="breadcrumb-item"><a href="/notice/content?id={{data.id}}">공지사항 보기</a></li>
+    <li class="breadcrumb-item active" aria-current="page">공지사항 수정</li>
+  </ol>
+</nav>
 <br />
 <form action="/notice/updateok" method="post" name="upfrm" style="width:60%; margin:auto; text-align:center;">{%csrf_token%}
 <p><b>수정하기</b></p>

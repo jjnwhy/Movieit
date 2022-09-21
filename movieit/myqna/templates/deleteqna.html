@@ -15,6 +15,11 @@
    p{
    	font-size: 23px;
    }
+   
+      li > a{
+  text-decoration: none;
+  color: black;
+}
 </style>
 <script type="text/javascript">
 window.onload = function(){
@@ -40,7 +45,14 @@ function cancelFunc(){
 <body>
 <div style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<br />
+<nav style="--bs-breadcrumb-divider: '>'; margin-left:15px" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/qna">Q&A</a></li>
+    <li class="breadcrumb-item"><a href="/qna/content?id={{data_one.id}}">Q&A 보기</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Q&A 삭제</li>
+  </ol>
+</nav>
+</div>
 <br />
 <div class="container" style=text-align:center;>	
 <p><b>게시글 삭제</b></p>
