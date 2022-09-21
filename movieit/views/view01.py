@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from mymovie.models import NoticeTab
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, JsonResponse
+from astropy.modeling.tests import data
 
 
 def mainFunc(request):
@@ -66,9 +67,33 @@ def searchFunc(request):
 def contentFunc(request):
     page = request.GET.get('page')
     data = NoticeTab.objects.get(id=request.GET.get('id'))
-    data.readcnt = data.readcnt + 1
-    data.save()
+    # data.readcnt = data.readcnt + 1
+    # data.save()
+    if data.readcnt == 0:
+            data.readcnt += 1
+            data.save()
+
+    # 세션값 동일하면 조회수 증가 X
+    if request.session.session_key is not None:    
+        data.readcnt = data.readcnt
+    else:
+        data.readcnt += 1
     
+    request.session.set_expiry(3) # 3초동안 세션 유지
+    data.save()
+        
+    # ip가 동일하면 조회수 증가 X
+    # def get(self,request,post_id):
+    #     if not NoticeTab.objects.filter(id = post_id).exists():
+    #         return JsonResponse({'MESSAGE' : 'DOES_NOT_EXIST_POST'}, status = 404)
+    #
+    #     data = NoticeTab.objects.get(id=request.GET.get('id'))
+    #
+    #     ip = get_client_ip(request)
+    #
+    #     if not NoticeTab.objects.filter(access_ip=ip, post_id=post_id).exists():
+    #         data.readcnt = data.readcnt + 1
+
     return render(request, 'content.html', {'data_one':data, 'page':page})
 
 def contentokFunc(request):
@@ -76,6 +101,7 @@ def contentokFunc(request):
     data = NoticeTab.objects.get(id=request.GET.get('id'))
     data.likecnt = data.likecnt + 1
     data.save()
+        
     return render(request, 'content.html', {'data_one':data})
     # return redirect('/notice/content')
 
@@ -123,11 +149,12 @@ def deleteokFunc(request):
     
 def get_client_ip(request): # 수정중
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    cookie = request.session
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
+        print('x:',ip)
     else:
         ip = request.META.get('REMOTE_ADDR')
+        print(ip)
     return ip
 
-
-    
