@@ -25,7 +25,10 @@
   text-decoration: none;
   color: black;
 }	
-
+	
+	ol > li{
+		font-size:15px;
+	}
 	select{
 		height:28px;
 		border-radius: 4px;
@@ -42,7 +45,7 @@
 <p><b>공지사항</b></p>
 <br />
 
-<table style="width:95%" class="table">
+<table style="width:95%; margin:auto" class="table">
 	<tr>
 		<th>번호</th>
 		<th>제목</th>
@@ -93,7 +96,7 @@
 				</select>
 				<input type="text" name="s_value" />
 				<input style="font-size:14px" class="btn btn-dark" type="submit" value="검색" />
-				<input style="font-size:14px; width:80px;" class="btn btn-light" value="새글작성" onClick="location.href='http://127.0.0.1:8000/notice/insert'" />
+				<input style="font-size:14px; width:80px;" class="btn btn-light" value="새글작성" onClick="location.href='http://127.0.0.1:80/notice/insert'" />
 			</form>
 		</td>
 	</tr>

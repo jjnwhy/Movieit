@@ -5,7 +5,6 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http.response import HttpResponseRedirect
 import pandas as pd
 
-
 def mainFunc(request):
     data_all = NoticeTab.objects.all().order_by('-id')
     per_page = 10
@@ -129,6 +128,19 @@ def get_client_ip(request): # 수정중
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+def detailFunc(request):
+    # myapp views에서 평점 순으로 정리한 recommend의 인덱스 가져오기 
+    id=int(request.GET.get('id'))
+    print(id)
+    
+    movies=pd.read_csv('pypro3/movieit/movies.csv',header=0,) #경로 수정 필요
+    movie=pd.DataFrame(movies.iloc[id,:])
+    # print(movies)
+    print(movie)
+    context={'movie':movie.to_html()}
+
+    return render(request,'movie.html',context)
 
 def detailFunc(request):
     # myapp views에서 평점 순으로 정리한 recommend의 인덱스 가져오기 
