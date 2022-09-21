@@ -80,8 +80,6 @@ def contentFunc(request):
     print(request.session.session_key)
     data.save()
         
-    
-    
     return render(request, 'content.html', {'data_one':data, 'page':page})
 
 def contentokFunc(request):
