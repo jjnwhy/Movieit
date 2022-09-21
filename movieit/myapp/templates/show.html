@@ -8,50 +8,84 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/rating.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(function(){
+	let current =0;
+	  $("div dl").on({
+	    "mouseenter":function() {
+		  current = $(this).index();
+	      $('.rating').eq(current).css({"display":"block"});
+	    },
+	    "mouseleave":function() {
+	    	// 마우스리브 할건데 
+	    	//--value의 값이 0이면 - rating.css 의 style --value값에서 input 값 value로 넘어오고 post로 list에 전송.
+	    	// display none으로 빼지 않기... 어떻게 하지
+			    	$('.rating').eq(current).css({"display":"none"}); 	    		
+	    }
+	  });
+});
+</script>
+
 <style>
-   *{
-      font-family: 'Nanum Gothic', sans-serif;
-   }
-   .container{
-   		width:60%;
-   }
 
-   
-   th, td{
-   	font-size:15px;
+*{
+   font-family: 'Nanum Gothic', sans-serif;
+}
+.container{
+	width:60%;
+}
 
-   }
-   
-   h3, input{
-   	text-align:center;
-   }
+h3, input{
+	text-align:center;
+}
+
+.row dl{
+	width:245px;
+	height:400px; 
+	position:relative;
+	margin-right:10px;
+}
+
+/*이미지 액자와 영화 이미지 크기 조절*/
+.image-wrap, .image-wrap img{
+	width:245px;
+	height:343px; 
+	
+}
+/*이미지 액자 */
+.image-wrap {
+	background:#000;
+	overflow:hidden;
+}
+/*이미지 액자 호버시*/ 
+.image-wrap:hover img{
+	opacity:0.5;
+	transition:0.5s;
+	transform:scale(115%);
+}
+dl dd {
+	position:absolute;
+	top:35%;
+	left:25px;
+	transition:0.5s;
+	
+}
+
+/*사진 위에 레이팅을 올리기 위한 투명 처리 */
+.rating{
+	background:transparent;
+	display:none;
+}
 
 </style>
 </head>
 <body>
-<div style="width:auto; margin:20px; text-align:center;">
+<div style="width:auto; margin:20px;">
 {% include 'includes/navbar.html' %}
 
-<!--  
-<pre style="font-size:14px; font-family:나눔고딕;">
-	KIM = 김호중 컴백 무비 빛이 나는 사람 PART 1. 다시 당신 곁으로
-	NOPE = 놉
-	LIMIT = 리미트
-	BULLET = 불릿 트레인
-	EMERGE = 비상선언
-	WILOVE = 사랑할 땐 누구나 최악이 된다
-	SEOUL = 서울대작전
-	ERROR = 시맨틱 에러: 더 무비
-	ALIEN = 외계+인 1부
-	LOTTO = 육사오(6/45)
-	CARTER = 카터
-	TOP = 탑건: 매버릭
-	HAN = 한산: 용의 출현
-	HUNT = 헌트
-	LEAVE = 헤어질 결심
-
-</pre>
--->
 <br>
 <br />
 <div class="container">
@@ -60,34 +94,29 @@
 <form action="/recommend_movie" method="post">{% csrf_token %}
 <table class="table table-borderless">
   <tr>
-  	<th>김호중 컴백 무비 빛이 나는 사람</th><th>놉</th><th>리미트</th><th>불릿트레인</th><th>비상선언</th>
-  </tr>
-  <tr>
-    <td><input class="form-control" type="text" name="KIM" value="0"></td>
-    <td><input class="form-control" type="text" name="NOPE" value="0"></td>
-    <td><input class="form-control" type="text" name="LIMIT" value="0"></td>
-    <td><input class="form-control" type="text" name="BULLET" value="0"></td>
-    <td><input class="form-control" type="text" name="EMERGE" value="0"></td>
-  </tr>
-  <tr>
-  	<th>사랑할 땐 누구나 최악이 된다</th><th>서울대작전</th><th>시맨틱 에러:더 무비</th><th>카터</th><th>헌트</th>
-  </tr>  
-  <tr>
-  	<td><input class="form-control" type="text" name="WILOVE" value="0"></td>
-    <td><input class="form-control" type="text" name="SEOUL" value="0"></td>
-    <td><input class="form-control" type="text" name="ERROR" value="0"></td>
-    <td><input class="form-control" type="text" name="CARTER" value="0"></td>
-    <td><input class="form-control" type="text" name="HUNT" value="0"></td>
-  </tr>
-  <tr>
-    <th>외계+인 1부</th><th>육사오(6/45)</th><th>탑건:매버릭</th><th>한산:용의 출현</th><th>헤어질 결심</th>
-  </tr>
-  <tr>
-    <td><input class="form-control" type="text" name="ALIEN" value="0" size="2"></td>
-    <td><input class="form-control" type="text" name="LOTTO" value="0" size="2"></td>
-    <td><input class="form-control" type="text" name="TOP" value="0" size="2"></td>
-    <td><input class="form-control" type="text" name="HAN" value="0" size="2"></td>
-    <td><input class="form-control" type="text" name="LEAVE" value="0" size="2"></td>
+  	<div class="row">
+    {%for i in movie %}
+    <dl>
+		<dt>
+			<div class="image-wrap"> 
+	    		<img src="/static/images/Rank{{forloop.counter0}}.png"/>
+			</div>
+	    	<p class="title" style="height:50px; text-align:center;">{{i}}</p>
+		</dt>
+		<dd>	    	
+			<input
+			    class="rating"
+			    name="movie{{forloop.counter}}"
+			    max="10"
+			    oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
+			    step="1"
+			    style="--fill: #C8102E;--symbol:var(--heart);--value:0;"
+			    type="range" 
+			    value="0">
+		</dd>
+    </dl>
+    {%endfor%}
+    </div>
   </tr>
   <tr>
   	<td colspan="8" style="text-align: center">
