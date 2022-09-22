@@ -150,15 +150,21 @@ def detailFunc(request):
     # movies=pd.read_csv('pypro3/movieit/movies.csv',header=0,) 
     # 깃헙 경로
     movies=pd.read_csv('https://raw.githubusercontent.com/jjnwhy/Movieit/feature_sm/movies%ED%8C%8C%EC%9D%BC/movies.csv',header=0,)
+    movies['감독']=movies["감독"].str.replace(pat=r'[\n]', repl=r'', regex=True)
+    movies['출연']=movies["출연"].str.replace(pat=r'[\n]', repl=r'', regex=True)
+    movies['줄거리']=movies["줄거리"].str.replace(pat=r'[\n]', repl=r'', regex=True)
     movie=pd.DataFrame(movies.iloc[id,:])
     # print(movies)
-    print(movie)
+    print('movie=',movies.columns)
+    print('movie=',movie)
+
     # 영화 포스터 보내기
     img_path="/static/images/Rank"+f'{id}'+".png"
     print(img_path)
     
     context={'movie':movie.to_html(),'path':img_path,
              'id':id}
+
     return render(request,'movie.html',context)
 
     

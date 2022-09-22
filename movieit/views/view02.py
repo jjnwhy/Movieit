@@ -46,7 +46,11 @@ def mainFunc(request):
     title = []
     # data = pd.read_csv("C:/Users/jny/Desktop/GitRepository/Movieit/movieit/mymovie/static/movie_summary.csv", encoding='unicode_escape')
     # print(data.head(3))
-    path = "C:/Users/yoonam.YOONAM/OneDrive/바탕 화면/movie_summary.csv"
+
+    # path = "D:/work/psou/movieit/mymovie/static/movie_summary.csv"
+    # path = "C:/Users/yoonam.YOONAM/OneDrive/바탕 화면/movie_summary.csv"
+    path = "teampro/myapp/movie_summary.csv"
+
     data = pd.read_excel(path)
     title = []
     for t in data['영화제목']:

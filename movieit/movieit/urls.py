@@ -32,3 +32,4 @@ urlpatterns = [
     path('movie',view01.detailFunc),
     path('movie/',include('mymovie.urls')),
 ] 
+

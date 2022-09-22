@@ -18,14 +18,16 @@ window.onload = function(){
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState === XMLHttpRequest.DONE){
 				if(xhr.status === 200){
-					//document.getElementById('btnlike').disabled = true;
+					//document.getElementById('btnlike').disabled = true;0
+					const likecnt = Number(document.getElementById('likecnt').innerText)
+					document.getElementById('likecnt').innerText = likecnt + 1
 				}
 			}
 		}
 		xhr.open('GET', 'contentok?id={{data_one.id}}', true);
 		xhr.send();
 		
-		window.location.reload();
+		// window.location.reload();
 	}
 }
 </script>
@@ -121,7 +123,7 @@ window.onload = function(){
             <!-- <input type="button" value="좋아요 : {{data_one.likecnt}}" id="btnlike" /> -->
             <button id="btnlike"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#d63384" class="bi bi-heart-fill" viewBox="0 0 16 16">
 				<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-			</svg></button>  {{data_one.likecnt}}
+			</svg></button>  <span id="likecnt">{{data_one.likecnt}}</span>
          </th>
       </tr>
       <tr>
