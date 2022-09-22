@@ -96,13 +96,13 @@ li>a {
         console.log(data)
         const wordcloud = echarts.init(document.getElementById("wordcloud"));
         const maskImage = document.createElement("img");
-        maskImage.src = "/static/image/movie1.png";
+        maskImage.src = "/static/images/logo.png";
         
         var option = {
               tooltip: {},
                  series: [ {
                     type: 'wordCloud',
-                     sizeRange: [15,50],
+                     sizeRange: [15,80],
                      rotationRange: [0, 0],
                      gridSize: 0,
                      shape: 'pentagon',
