@@ -39,7 +39,7 @@ ol>li {
 </style>
 </head>
 <body>
-<div style="margin:20px; text-align:center;">
+<div class="container-fluid" style="width:auto;margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
 <div class="row justify-content-center">
 <nav style="--bs-breadcrumb-divider: '>'; width:auto;" aria-label="breadcrumb">
@@ -51,7 +51,7 @@ ol>li {
 </div>
 </div>
 <br />
-<div class="container" style="width:70%">
+<div class="container" style="margin:auto">
 	<p style="text-align:center;"><b>{{data_one.id}}번 게시글</b></p>
 	<table style="width:80%; margin:auto" class="table">
 		<tr>
@@ -64,22 +64,8 @@ ol>li {
 		</tr>
 	</table>
 	<table style="width:80%; margin:auto" class="table">
-		<!-- 
-		<tr style="background-color:lightgray;">
-			<td>
-				작성자: <a href="mailto:{{data_one.mail}}">{{data_one.name}}</a>
-				(ip: {{data_one.bip}})
-			</td>
-			<td>
-				작성일: {{data_one.bdate}}
-			</td>
-			<td>
-				조회수: {{data_one.readcnt}}
-			</td>
-		</tr>
-		-->
-		<tr style="background-color:#E6E6E6;">
-			<th>작성자<td><a href="mailto:{{data_one.mail}}">{{data_one.name}}</a>(ip: {{data_one.bip}})</td></th>
+		<tr>
+			<th>작성자<td><a href="mailto:{{data_one.mail}}">{{data_one.name}}</a></td></th>
          	<th>작성일<td>{{data_one.bdate}}</td></th>
          	<th>조회수<td>{{data_one.readcnt}}</td></th>   
 		</tr>

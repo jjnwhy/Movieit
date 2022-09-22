@@ -39,19 +39,20 @@ ol>li {
 }
 </style>
 <body>
-<div class="container-fluid" style="width:auto; margin:20px; text-align:center;">
-{% include 'includes/navbar.html' %}
-<div class="row justify-content-center">
-   <nav style="--bs-breadcrumb-divider: '&gt;'; margin: auto;" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="/input">영화추천서비스</a></li>
-         <li class="breadcrumb-item active" aria-current="page">추천영화</li>
-      </ol>
-   </nav>
-</div>
-</div>
-   <div class="container-md" style="margin:auto">
-   <h2 class="my-5" > 이런 영화는 어떠세요? </h2>
+   <div style="width: auto; margin: 20px;">
+      {% include 'includes/navbar.html' %}
+     <div class="row justify-content-center">
+      <nav style="--bs-breadcrumb-divider: '&gt;'; width:auto;"aria-label="breadcrumb">
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/input">영화추천서비스</a></li>
+            <li class="breadcrumb-item active" aria-current="page">추천영화</li>
+         </ol>
+      </nav>
+   </div>
+   
+   <div class="container-md">
+   	<div class="row justify-content-center">
+   <h2 class="my-5" style="width:auto;" > 이런 영화는 어떠세요? </h2>
       <div class="row md">
        {% for key,value in title.items%}
          <div class="col-lg-4 col-sm-12">
@@ -64,11 +65,13 @@ ol>li {
          </div><!-- /.col-lg-4 -->
       {%endfor%}
       </div>
+      </div>
+    </div>
       <!-- 영화 상세 정보 -->
       {% for i in info%}
-      <div class='movie-info'>
+      <span class='movie-info'>
          {{i}}
-      </div>
+      </span>
       {%endfor%}
    </div>
 {% include 'includes/footer.html' %}
