@@ -10,23 +10,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/css/rating.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script>
-$(function(){
-	let current =0;
-	  $("div dl").on({
-	    "mouseenter":function() {
-		  current = $(this).index();
-	      $('.rating').eq(current).css({"display":"block"});
-	    },
-	    "mouseleave":function() {
-	    	// 마우스리브 할건데 
-	    	//--value의 값이 0이면 - rating.css 의 style --value값에서 input 값 value로 넘어오고 post로 list에 전송.
-	    	// display none으로 빼지 않기... 어떻게 하지
-			    	$('.rating').eq(current).css({"display":"none"}); 	    		
-	    }
-	  });
+
+$(function(){	// jquery 시작
+// 평점 hover기능 구현
+
+	let current=0; //현재 index를 기억할 변수
+
+	
+	$(".row dl").click(function(){
+		current=$(this).index();
+		$('.rating').eq(current).attr("clicked",true); 
+	});
+	$(".row dl").mouseenter(function(){
+		current=$(this).index();
+		$('.rating').eq(current).css({"display":"block"});
+	});
+	$(".row dl").mouseleave(function(){
+			current=$(this).index();
+		if($('.rating').eq(current).attr("clicked")){
+			return;
+		}else{
+			$('.rating').eq(current).css({"display":"none"});			
+		};
+	});
 });
+
+
 </script>
 
 <style>
@@ -49,7 +59,7 @@ h3, input{
 	margin-right:10px;
 }
 
-/*이미지 액자와 영화 이미지 크기 조절*/
+/*이미지 액자와 영화 이미지 크기 동일하게 조정*/
 .image-wrap, .image-wrap img{
 	width:245px;
 	height:343px; 
@@ -58,6 +68,7 @@ h3, input{
 /*이미지 액자 */
 .image-wrap {
 	background:#000;
+	border-radius:10px;
 	overflow:hidden;
 }
 /*이미지 액자 호버시*/ 
@@ -66,15 +77,15 @@ h3, input{
 	transition:0.5s;
 	transform:scale(115%);
 }
+/*input rating 이 위치한 dd의 포지션 지정*/ 
 dl dd {
 	position:absolute;
 	top:35%;
-	left:25px;
+	left:30px;
 	transition:0.5s;
-	
 }
 
-/*사진 위에 레이팅을 올리기 위한 투명 처리 */
+/*사진 위에 평점을 올리기 위한 투명 처리 */
 .rating{
 	background:transparent;
 	display:none;
@@ -89,7 +100,7 @@ dl dd {
 <br>
 <br />
 <div class="container">
-<p><b>아래 영화 중에서 관람하셨던 영화의 평점을 기입해주세요.(0~10점 사이)</b></p>
+<p><b>재밌게 관람하신 영화에 하트를 드래그 해주세요</b></p>
 <br />
 <form action="/recommend_movie" method="post">{% csrf_token %}
 <table class="table table-borderless">
