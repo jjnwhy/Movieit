@@ -24,6 +24,7 @@ window.onload = function(){
 				}
 			}
 		}
+		
 		xhr.open('GET', 'contentok?id={{data_one.id}}', true);
 		xhr.send();
 		
@@ -81,14 +82,16 @@ window.onload = function(){
 </style>
 </head>
 <body>
-<div class="container" style="margin:20px; text-align:center;">
+<div class="container-fluid" style="width:auto;margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<nav style="--bs-breadcrumb-divider: '>'; margin-left:15px" aria-label="breadcrumb">
+<div class="row justify-content-center">
+<nav style="--bs-breadcrumb-divider: '>'; width:auto;" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/notice">공지사항</a></li>
     <li class="breadcrumb-item active" aria-current="page">공지사항 보기</li>
   </ol>
 </nav>
+</div>
 </div>
 <br />
 <div class="container" style="margin:auto">
@@ -121,7 +124,7 @@ window.onload = function(){
          <th colspan="2" style="text-align:center">
             <!-- <button class="btn btn-primary" id="btnlike" value="좋아요 : {{data_one.likecnt}}">좋아요 : {{data_one.likecnt}}</button> -->
             <!-- <input type="button" value="좋아요 : {{data_one.likecnt}}" id="btnlike" /> -->
-            <button id="btnlike"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#d63384" class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <span id="like"><button id="btnlike"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="#d63384" class="bi bi-heart-fill" viewBox="0 0 16 16">
 				<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 			</svg></button>  <span id="likecnt">{{data_one.likecnt}}</span>
          </th>
@@ -133,6 +136,7 @@ window.onload = function(){
       </tr>
    </table>
 </div>
+
 {% include 'includes/footer.html' %}
 </body>
 </html>

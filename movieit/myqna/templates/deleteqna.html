@@ -57,31 +57,27 @@ ol>li {
 </script>
 </head>
 <body>
-	<div style="width: auto; margin: 20px; text-align: center;">
-		{% include 'includes/navbar.html' %}
-		<nav style="--bs-breadcrumb-divider: '>'; margin-left: 15px" aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="/qna">Q&A</a></li>
-				<li class="breadcrumb-item"><a href="/qna/content?id={{data_one.id}}">Q&A 보기</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Q&A 삭제</li>
-			</ol>
-		</nav>
-	</div>
-	<br />
-	<div class="container" style="text-align: center;">
-		<p>
-			<b>게시글 삭제</b>
-		</p>
-		<br />
-		<p style="font-size: 17px">
-			<b>삭제하려면 비밀번호를 입력하세요</b>
-		</p>
-		<br />
-		<form action="/qna/deleteok" method='post'>
-			{%csrf_token%} <input type="hidden" name='id' value='{{data_one.id}}' />
-			<table style="width: 50%; text-align: center; margin: auto"
-				class="table">
-				<!-- 
+<div style="width:auto; margin:20px; text-align:center;">
+{% include 'includes/navbar.html' %}
+<div class="row justify-content-center">
+<nav style="--bs-breadcrumb-divider: '>';width:auto;" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/qna">Q&A</a></li>
+    <li class="breadcrumb-item"><a href="/qna/content?id={{data_one.id}}">Q&A 보기</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Q&A 삭제</li>
+  </ol>
+</nav>
+</div>
+</div>
+<br />
+<div class="container" style=text-align:center;>	
+<br />
+<p style="font-size:17px"><b>삭제하려면 비밀번호를 입력하세요</b></p>
+<br />
+<form action="/qna/deleteok" method='post'>{%csrf_token%}
+	<input type="hidden" name='id' value='{{data_one.id}}' />
+	<table  style="width:50%; text-align:center; margin:auto" class="table">
+		<!-- 
 		<tr>
 			<th>삭제하려면 비밀번호를 입력하세요.</th>
 		</tr>
