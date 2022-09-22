@@ -21,11 +21,20 @@
    	font-size: 20px;
    }
    
+   td > a{
+  text-decoration: none;
+  color: black;
+}
+  div > a{
+  text-decoration: none;
+  color: black;
+}
    	select{
 		height:28px;
 		border-radius: 4px;
 	}
 </style>
+<title>Q&A</title>
 </head>
 </body>
 <div style="width:auto; margin:20px; text-align:center;">
@@ -35,10 +44,10 @@
 <div class="container">
 <p><b>Q&A</b></p>
 <br />
-<table style="width:95%" class="table">
+<table style="width:80%; margin:auto" class="table">
 <tr>
 	<th>번호</th>
-	<th>제목</th>
+	<th style="width:60%;">제목</th>
 	<th>작성자</th>
 	<th>작성일</th>
 	<th>조회수</th>
@@ -80,7 +89,7 @@
 {%else%}
 	<tr>
 		<td colspan="5">
-			글이 없어요
+			글이 없습니다.
 		</td>
 	</tr>
 {%endif%}
@@ -89,12 +98,12 @@
 	<td colspan="6" style="text-align: center;">
     	<form action="/qna/search" method="post">{%csrf_token%}
         	<select name="s_type">
-           		<option value="title" selected>글제목</option>
+           		<option value="title" selected>제목</option>
            		<option value="name">작성자</option>
            </select>
            <input type="text" name="s_value">
            <input style="font-size:14px" class="btn btn-dark" type="submit" value="검색">
-           <input style="font-size:14px; width:80px;" class="btn btn-light" value="새글작성" onClick="location.href='http://127.0.0.1:8000/qna/insert'" />
+           <input style="font-size:14px; width:80px;" class="btn btn-light" value="새글작성" onClick="location.href='http://127.0.0.1:80/qna/insert'" />
         </form>
    </td>
 </tr>

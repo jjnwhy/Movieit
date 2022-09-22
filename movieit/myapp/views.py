@@ -43,9 +43,10 @@ def recommend_movie(request):
     # 새로 받은 데이터 가져오기
     new_data = np.array([[KIM,NOPE,LIMIT,BULLET,EMERGE,WILOVE,SEOUL,
                           ERROR,ALIEN,LOTTO,CARTER,TOP,HAN,HUNT,LEAVE]])
-    new_data = pd.DataFrame(new_data, columns=['김호중 컴백 무비 빛이 나는 사람 PART 1. 다시 당신 곁으로', '놉', '리미트', '불릿 트레인', '비상선언',
-       '사랑할 땐 누구나 최악이 된다', '서울대작전', '시맨틱 에러: 더 무비', '외계+인 1부', '육사오(6/45)',
-       '카터', '탑건: 매버릭', '한산: 용의 출현', '헌트', '헤어질 결심'])
+    new_data = pd.DataFrame(new_data, columns=movie_data.columns)
+    #columns=['김호중 컴백 무비 빛이 나는 사람 PART 1. 다시 당신 곁으로', '놉', '리미트', '불릿 트레인', '비상선언',
+    #    '사랑할 땐 누구나 최악이 된다', '서울대작전', '시맨틱 에러: 더 무비', '외계+인 1부', '육사오(6/45)',
+    #    '카터', '탑건: 매버릭', '한산: 용의 출현', '헌트', '헤어질 결심']
     # 기존 csv에 concat 하기
     print(new_data)
     con_data = pd.concat([movie_data, new_data], sort=False, ignore_index=True)
@@ -55,7 +56,7 @@ def recommend_movie(request):
     matrix = con_data.to_numpy()
     user_ratings_mean = np.mean(matrix, axis=1)
     matrix_user_mean = matrix - user_ratings_mean.reshape(-1,1)
-    U, sigma, Vt = svds(matrix_user_mean, k = 10)
+    U, sigma, Vt = svds(matrix_user_mean, k = 13)
     sigma = np.diag(sigma)
     svd_user_predicted_ratings = np.dot(np.dot(U, sigma), Vt) + user_ratings_mean.reshape(-1, 1)
     df_svd_preds = pd.DataFrame(svd_user_predicted_ratings, columns = con_data.columns)
