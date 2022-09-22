@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<script src="/static/js/script.js" ></script>
+<style>
+   *{
+      font-family: 'Nanum Gothic', sans-serif;
+   }
+   
+   th, td{
+   	font-size:15px;
+   }
+
+   p{
+   	font-size: 20px;
+   }
+   
+   td > a{
+  text-decoration: none;
+  color: black;
+}
+  div > a{
+  text-decoration: none;
+  color: black;
+}
+   	select{
+		height:28px;
+		border-radius: 4px;
+	}
+</style>
+<title>Q&A</title>
+</head>
+</body>
+<div style="width:auto; margin:20px; text-align:center;">
+{% include 'includes/navbar.html' %}
+<br />
+<br />
+<div class="container">
+<p><b>Q&A</b></p>
+<br />
+<table style="width:80%; margin:auto" class="table">
+<tr>
+	<th>번호</th>
+	<th style="width:60%;">제목</th>
+	<th>작성자</th>
+	<th>작성일</th>
+	<th>조회수</th>
+</tr>
+{%if datas%}
+{%for d in datas%}
+	<tr>
+		<td>{{d.id}}</td>
+		<td>
+			{%with ''|center:d.nested as range%}
+				{%for _ in range %}
+					&nbsp;&nbsp;
+				{%endfor%}
+			{%endwith%}
+			<a href="/qna/content?id={{d.id}}&page={{datas.number}}">{{d.title}}</a>
+		</td>
+		<td>{{d.name}}</td>
+		<td>{{d.bdate}}</td>
+		<td>{{d.readcnt}}</td>
+	</tr>
+{%endfor%}
+<!-- 페이징 처리 -->
+<tr>
+	<td colspan="5" style="text-align: center">
+		<div>
+			{%if datas.has_previous%}
+				<a href="/qna/list?page={{datas.previous_page_number}}">&laquo;이전</a>
+			{%endif%}
+			{%if datas.has_next%}
+				<a href="/qna/list?page={{datas.next_page_number}}">&raquo;다음</a>
+			{%endif%}
+			&nbsp;&nbsp;
+			({{datas.number}} / {{datas.paginator.num_pages}})
+		</div>
+	</td>
+</tr>
+
+
+{%else%}
+	<tr>
+		<td colspan="5">
+			글이 없습니다.
+		</td>
+	</tr>
+{%endif%}
+<!-- 검색 -->
+<tr>
+	<td colspan="6" style="text-align: center;">
+    	<form action="/qna/search" method="post">{%csrf_token%}
+        	<select name="s_type">
+           		<option value="title" selected>제목</option>
+           		<option value="name">작성자</option>
+           </select>
+           <input type="text" name="s_value">
+           <input style="font-size:14px" class="btn btn-dark" type="submit" value="검색">
+           <input style="font-size:14px; width:80px;" class="btn btn-light" value="새글작성" onClick="location.href='http://127.0.0.1:80/qna/insert'" />
+        </form>
+   </td>
+</tr>
+</table>
+</div>
+{% include 'includes/footer.html' %}
+</body>
+</html>
