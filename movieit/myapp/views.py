@@ -12,31 +12,33 @@ import seaborn as sns
 
 # def mainFunc(request):
 #     return render(request, 'main.html')
+movie_data = pd.read_csv('https://raw.githubusercontent.com/jjnwhy/Movieit/feature_sm/movies%ED%8C%8C%EC%9D%BC/movie_naver.csv')
 
 def inputFunc(request):
-    return render(request, 'show.html')
+    movie_title=movie_data.columns
+    context={'movie':movie_title}
+    return render(request, 'show.html',context)
 
 def recommend_movie(request):
     #로컬 경로
     # movie_data = pd.read_csv('pypro3/movieit/movie_naver.csv') 
     #깃헙 경로
-    movie_data = pd.read_csv('https://raw.githubusercontent.com/jjnwhy/Movieit/feature_sm/movies%ED%8C%8C%EC%9D%BC/movie_naver.csv')
 
-    KIM = int(request.POST.get('KIM'))
-    NOPE = int(request.POST.get('NOPE'))
-    LIMIT = int(request.POST.get('LIMIT'))
-    BULLET = int(request.POST.get('BULLET'))
-    EMERGE = int(request.POST.get('EMERGE'))
-    WILOVE = int(request.POST.get('WILOVE'))
-    SEOUL = int(request.POST.get('SEOUL'))
-    ERROR = int(request.POST.get('ERROR'))
-    ALIEN = int(request.POST.get('ALIEN'))
-    LOTTO = int(request.POST.get('LOTTO'))
-    CARTER = int(request.POST.get('CARTER'))
-    TOP = int(request.POST.get('TOP'))
-    HAN = int(request.POST.get('HAN'))
-    HUNT = int(request.POST.get('HUNT'))
-    LEAVE = int(request.POST.get('LEAVE'))
+    KIM = int(request.POST.get('movie1'))
+    NOPE = int(request.POST.get('movie2'))
+    LIMIT = int(request.POST.get('movie3'))
+    BULLET = int(request.POST.get('movie4'))
+    EMERGE = int(request.POST.get('movie5'))
+    WILOVE = int(request.POST.get('movie6'))
+    SEOUL = int(request.POST.get('movie7'))
+    ERROR = int(request.POST.get('movie8'))
+    ALIEN = int(request.POST.get('movie9'))
+    LOTTO = int(request.POST.get('movie10'))
+    CARTER = int(request.POST.get('movie11'))
+    TOP = int(request.POST.get('movie12'))
+    HAN = int(request.POST.get('movie13'))
+    HUNT = int(request.POST.get('movie14'))
+    LEAVE = int(request.POST.get('movie15'))
     
     # 새로 받은 데이터 가져오기
     new_data = np.array([[KIM,NOPE,LIMIT,BULLET,EMERGE,WILOVE,SEOUL,
