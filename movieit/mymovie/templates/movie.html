@@ -82,7 +82,7 @@ ol>li {
 		</nav>
 		</div>
 		<br />
-      <div class="table-responsive" style="padding:10px 300px;">
+      <div class="table-responsive" style="padding:15px 150px; text-align:center">
          <!-- 영화 포스터-->
          <div class=movie-image>
             <img id="movie-img" class="img-fluid" src="{{path}}" alt="" />
@@ -92,14 +92,16 @@ ol>li {
       </div>
       
       <div style="text-align:center;">
-      <button class="btn btn-dark" onclick="display();" id="wordbtn">워드클라우드 보기</button>
+      	<button class="btn btn-dark" onclick="display();" id="wordbtn">워드클라우드 보기</button>
+	      <div style="text-align:center; display:none;" id="word">
+	      워드클라우드 여기에 넣고싶다.. 
+	      <hr />
+	      <!-- 워드클라우드 -->
+		      <div>
+		      <span id="wordcloud"></span>
+		      </div>
+	      </div>
       </div>
-      <div style="text-align:center;display:none;" id="word">
-      워드클라우드 여기에 넣고싶다.. 
-      </div>
-      <hr />
-      <!-- 워드클라우드 -->
-      <span id="wordcloud"></span>
       
       {% include 'includes/footer.html' %}
    </div>
