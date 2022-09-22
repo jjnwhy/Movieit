@@ -50,12 +50,14 @@ window.onload = function(){
 </head>
 <body style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<nav style="--bs-breadcrumb-divider: '>'; margin-left:15px" aria-label="breadcrumb">
+<div class="row justify-content-center">
+<nav style="--bs-breadcrumb-divider: '>';width:auto;" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/notice">공지사항</a></li>
     <li class="breadcrumb-item active" aria-current="page">공지사항 작성</li>
   </ol>
 </nav>
+</div>
 <br />
 <form action="/notice/insertok" method="post" name="insertfrm" style="width:60%; margin:auto; text-align:center;">{%csrf_token%}
 <p><b>공지사항 작성</b></p>

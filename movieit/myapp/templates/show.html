@@ -100,7 +100,8 @@ dl dd {
 <br>
 <br />
 <div class="container">
-<p><b>재밌게 관람하신 영화에 하트를 드래그 해주세요</b></p>
+  
+<p class="container-fluid" style="width:auto; text-align:center;"><b>재밌게 관람하신 영화에 하트를 드래그 해주세요 (중복 가능)</b></p>
 <br />
 <form action="/recommend_movie" method="post">{% csrf_token %}
 <table class="table table-borderless">
@@ -131,7 +132,7 @@ dl dd {
   </tr>
   <tr>
   	<td colspan="8" style="text-align: center">
-  		<input class="btn btn-primary" type="submit" value="영화 추천 받기">
+  		<input class="btn btn-dark" type="submit" value="영화 추천 받기">
   	</td>
   </tr>
 </table>
