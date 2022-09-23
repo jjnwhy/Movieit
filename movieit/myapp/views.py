@@ -124,8 +124,8 @@ def sentiment_predict(request):
     stopwords = ['의','가','이','은','들','는','좀','잘','걍','과','도','를','으로','자','에','와','한','하다']
     tokenizer = Tokenizer() 
     okt = Okt()
-    # loaded_model = load_model("/movieit/best_model.h5")
-    loaded_model = load_model("C:/Users/wnstm/OneDrive/바탕 화면/팀플/무브잇/Movieit/movieit/best_model.h5")
+    loaded_model = load_model("C:/Users/yoonam.YOONAM/OneDrive/바탕 화면/best_model.h5")
+    # loaded_model = load_model("/best_model.h5")
     REVIEW = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣 ]','', REVIEW)
     REVIEW = okt.morphs(REVIEW, stem=True) # 토큰화
     REVIEW = [word for word in REVIEW if not word in stopwords] # 불용어 제거

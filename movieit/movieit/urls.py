@@ -34,6 +34,6 @@ urlpatterns = [
     path('sentiment_predict', views.sentiment_predict),
     path('sentiment', views.sentimentFunc),
     path('sentiment/',include('myapp.urls')),
-    path('cosine_recommend_movie', views.cosine_recommend_movie)
+    path('cosine_recommend_movie', views.cosine_recommend_movie),
 ] 
 
