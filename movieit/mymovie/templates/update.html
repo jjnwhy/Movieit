@@ -27,7 +27,6 @@ ol>li {
 }
 </style>
 <script type="text/javascript">
-/*
 window.onload = function(){
 	document.querySelector("#btnUpdate").onclick = function(){
 		if(upfrm.up_passwd.value != "admin" || upfrm.up_passwd.value === ""){
@@ -40,32 +39,20 @@ window.onload = function(){
 		upfrm.submit();
 	}
 }
-*/
-window.onload = function(){
-	document.querySelector("#btnUpdate").onclick = function(){
-		if(upfrm.up_passwd.value != "admin" || upfrm.up_passwd.value === ""){
-			if(document.querySelector("#span").style.display === "none"){
-				document.querySelector("#span").style.display = "block";
-				upfrm.up_passwd.focus();
-				return;
-			}
-		}
-		upfrm.submit();
-	}
-}
-
 </script>
 </head>
 <body>
 <div style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<nav style="--bs-breadcrumb-divider: '>';" margin-left:15px" aria-label="breadcrumb">
+<div class="row justify-content-center">
+<nav style="--bs-breadcrumb-divider: '>'; width:auto;" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/notice">공지사항</a></li>
     <li class="breadcrumb-item"><a href="/notice/content?id={{data.id}}">공지사항 보기</a></li>
     <li class="breadcrumb-item active" aria-current="page">공지사항 수정</li>
   </ol>
 </nav>
+</div>
 <br />
 <form action="/notice/updateok" method="post" name="upfrm" style="width:60%; margin:auto; text-align:center;">{%csrf_token%}
 <p><b>수정하기</b></p>

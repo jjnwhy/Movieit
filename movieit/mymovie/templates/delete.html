@@ -48,7 +48,8 @@ window.onload = function(){
 <body>
 <div style="width:auto; margin:20px; text-align:center;">
 {% include 'includes/navbar.html' %}
-<nav style="--bs-breadcrumb-divider: '>'; margin-left:15px" aria-label="breadcrumb">
+<div class="row justify-content-center">
+<nav style="--bs-breadcrumb-divider: '>'; width:auto;" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/notice">공지사항</a></li>
     <li class="breadcrumb-item"><a href="/notice/content?id={{data.id}}">공지사항 보기</a></li>
@@ -56,9 +57,9 @@ window.onload = function(){
   </ol>
 </nav>
 </div>
+</div>
 <br />
 <div class="container" style=text-align:center;>	
-<p><b>게시글 삭제</b></p>
 <br />
 <p style="font-size:17px"><b>삭제하려면 비밀번호를 입력하세요</b></p>
 <br />

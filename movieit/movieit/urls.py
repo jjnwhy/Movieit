@@ -22,7 +22,7 @@ from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view02.mainFunc),
-    path('notice', view01.mainFunc),
+    path('notice', view01.mainFunc),  
     path('notice/', include('mymovie.urls')), # 위임하기
     path('input', views.inputFunc),
     path('input/', include('myapp.urls')),

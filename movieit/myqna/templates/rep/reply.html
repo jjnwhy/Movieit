@@ -2,16 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>댓글</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-	crossorigin="anonymous"></script>
+<title>{{data_one.title}} > 댓글</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -57,10 +50,10 @@ ol>li {
 </script>
 </head>
 <body>
-<body style="margin: 20px;"text-align:center;">
+	<div class="container-fluid" style="width:auto;margin:20px; text-align:center;">
 	{% include 'includes/navbar.html' %}
-	<nav style="--bs-breadcrumb-divider: '>'; margin-left: 15px"
-		aria-label="breadcrumb">
+	<div class="row justify-content-center">
+	<nav style="--bs-breadcrumb-divider: '>'; width:auto;" aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/qna">Q&A</a></li>
 			<li class="breadcrumb-item"><a
@@ -70,53 +63,14 @@ ol>li {
 		</ol>
 	</nav>
 	</div>
+	
 	<br />
-	<form action="/qna/replyok"
-		style="width: 60%; margin: auto; text-align: center;" name="refrm">
+	<form action="/qna/replyok" style="width: 60%; margin: auto; text-align: center;" name="refrm">
 		{% csrf_token %}
 		<p>
 			<b>댓글 작성
 				<p>
-					<b> <!-- 
-			<div class="input-group mb-3" >
-				<input type="hidden" name="id" value={{data_one.id}} />
-				<input type="hidden" name="gnum" value={{data_one.gnum}} />
-				<input type="hidden" name="onum" value={{data_one.onum}} />
-				<input type="hidden" name="nested"value={{data_one.nested}} />
-			</div>
-		<table class="table" style="width:95%">
-		 <tr>
-			<td>작성자</td>
-			<td><input type="text" name="name" /></td>
-		 </tr>
-		 <tr>
-			<td>비밀번호</td>
-			<td><input type="text" name="passwd" /></td>
-		 </tr>
-		  <tr>
-			<td>이메일</td>
-			<td><input type="text" name="mail" /></td>
-		 </tr>
-		  <tr>
-			<td>제목</td>
-			<td><input type="text" style="width:99%" name="title" value="[RE]{{data_one.title}}" /></td>
-		 </tr>
-		  <tr>
-			<td>내용</td>
-			<td>
-				<textarea name="cont" rows="5" style="width:99%"></textarea>
-			</td>
-		 </tr>
-		 <tr>
-			<td colspan="2" style="text-align: center;">
-				<input style="font-size:14px" type="button" value="댓글 작성" id="btnReplyOk" class="btn btn-dark" name="btn" />
-				<input style="font-size:14px" type="button" value="이전" class="btn btn-light" name="btn" onclick='history.back()' />
-			</td>
-		 </tr>
-		 
-		</table>
-		 -->
-
+					<b>
 						<div class="input-group mb-3">
 							<input type="hidden" name="id" value={{data_one.id}} /> <input
 								type="hidden" name="gnum" value={{data_one.gnum}} /> <input
@@ -171,5 +125,6 @@ ol>li {
 						class="btn btn-light" name="btn" onclick='history.back()' />
 	</form>
 	{% include 'includes/footer.html' %}
+	</div>
 </body>
 </html>
