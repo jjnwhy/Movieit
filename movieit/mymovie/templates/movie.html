@@ -42,7 +42,7 @@
 
 #movie-img {
 	border-radius: 5%;
-}
+} 
 
 * {
 	margin: 0
@@ -76,8 +76,10 @@ ol>li {
 			aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/input">영화추천서비스</a></li>
-				<li class="breadcrumb-item"><a href="#" onClick="history.back()">추천영화</a></li>
-				<li class="breadcrumb-item active" aria-current="page">추천영화 상세보기</li>
+				<li class="breadcrumb-item"><a href="#"
+					onClick="history.back()">추천영화</a></li>
+				<li class="breadcrumb-item active" aria-current="page">추천영화
+					상세보기</li>
 			</ol>
 		</nav>
 		</div>
@@ -119,6 +121,7 @@ ol>li {
 		   document.querySelector("#wordbtn").innerText = "워드클라우드 보기";
 	   }
    }
+
    
    window.onload = async () => {    
        const data = await fetch("/static/words/{{id}}.json").then((response) => response.json());

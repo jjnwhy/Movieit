@@ -31,5 +31,9 @@ urlpatterns = [
     path('qna/',include('myqna.urls')),
     path('movie',view01.detailFunc),
     path('movie/',include('mymovie.urls')),
+    path('sentiment_predict', views.sentiment_predict),
+    path('sentiment', views.sentimentFunc),
+    path('sentiment/',include('myapp.urls')),
+    path('cosine_recommend_movie', views.cosine_recommend_movie)
 ] 
 
