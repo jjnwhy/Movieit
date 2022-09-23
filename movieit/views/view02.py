@@ -48,7 +48,8 @@ def mainFunc(request):
     # print(data.head(3))
     # path = "D:/work/psou/movieit/mymovie/static/movie_summary.csv"
     # path = "C:/Users/jny/Desktop/GitRepository/Movieit/movieit/mymovie/static/movie_summary.csv"
-    path = "C:/Users/yoonam.YOONAM/OneDrive/바탕 화면/movie_summary.csv"
+    # path = "C:/Users/yoonam.YOONAM/OneDrive/바탕 화면/movie_summary.csv"
+    path = "C:/Users/wnstm/OneDrive/바탕 화면/팀플/무브잇/Movieit/movieit/movies파일/movie_summary.csv"
     
     data = pd.read_excel(path)
     title = []

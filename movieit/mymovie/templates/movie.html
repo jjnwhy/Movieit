@@ -69,47 +69,52 @@ ol>li {
 </style>
 </head>
 <body>
-   <div style="width: auto; margin: 20px;">
-      {% include 'includes/navbar.html' %}
-      <div class="row justify-content-center">
-      <nav style="--bs-breadcrumb-divider: '&gt;'; width:auto;"
-			aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="/input">영화추천서비스</a></li>
-				<li class="breadcrumb-item"><a href="#" onClick="history.back()">추천영화</a></li>
-				<li class="breadcrumb-item active" aria-current="page">추천영화 상세보기</li>
-			</ol>
-		</nav>
+	<div style="width: auto; margin: 20px;">
+		{% include 'includes/navbar.html' %}
+		<div class="row justify-content-center">
+			<nav style="--bs-breadcrumb-divider: '&amp;gt;'; width: auto;"
+				aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/input">영화추천서비스</a></li>
+					<li class="breadcrumb-item"><a href="#"
+						onClick="history.back()">추천영화</a></li>
+					<li class="breadcrumb-item active" aria-current="page">추천영화
+						상세보기</li>
+				</ol>
+			</nav>
 		</div>
 		<br />
-      <div class="table-responsive" style="padding:15px 150px; text-align:center">
-         <!-- 영화 포스터-->
-         <div class=movie-image>
-            <img id="movie-img" class="img-fluid" src="{{path}}" alt="" />
-         </div>
-         {{movie|safe}}
-         
-      </div>
-      
-      <div style="text-align:center;">
-      	<button class="btn btn-dark" onclick="display();" id="wordbtn">워드클라우드 보기</button>
-	      <div style="text-align:center; display:none;" id="word">
-	      워드클라우드 여기에 넣고싶다.. 
-	      <hr />
-	      <!-- 워드클라우드 -->
-		      <div>
-		      <span id="wordcloud"></span>
-		      </div>
-	      </div>
-      </div>
-      
-      {% include 'includes/footer.html' %}
-   </div>
-   
-   <script src='https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js'></script>
-   <script src="/static/js/echarts-wordcloud.js"></script>
-   <script>
-   function display(){
+
+		<div class="table-responsive"
+			style="padding: 15px 150px; text-align: center">
+			<!-- 영화 포스터-->
+			<div class=movie-image>
+				<img id="movie-img" class="img-fluid" src="{{path}}" alt="" />
+			</div>
+			{{movie|safe}}
+
+		</div>
+		<hr />
+		<!-- 워드클라우드 -->
+		<p>
+		<div style="text-align: center;">
+			<button class="btn btn-dark" onclick="display();" id="wordbtn">워드클라우드
+				보기</button>
+			<div style="text-align: center; display: none;" id="word">
+				<div>
+					<span id="wordcloud"></span>
+				</div>
+
+			</div>
+		</div>
+
+		{% include 'includes/footer.html' %}
+	</div>
+
+	<script src='https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js'></script>
+	<script src="/static/js/echarts-wordcloud.js"></script>
+	<script>
+   	function display(){
 	   if(document.querySelector("#word").style.display === "none"){
 		   document.querySelector("#word").style.display = "block";
 		   document.querySelector("#wordbtn").innerText = "워드클라우드 닫기";
@@ -118,50 +123,51 @@ ol>li {
 		   document.querySelector("#word").style.display = "none";
 		   document.querySelector("#wordbtn").innerText = "워드클라우드 보기";
 	   }
-   }
+   	}
    
-   window.onload = async () => {    
-       const data = await fetch("/static/words/{{id}}.json").then((response) => response.json());
-       console.log(data)
-       const wordcloud = echarts.init(document.getElementById("wordcloud"));
-       const maskImage = document.createElement("img");
-       maskImage.src = "/static/image/movie1.png";
-       
-       var option = {
-             tooltip: {},
-                series: [ {
-                   type: 'wordCloud',
-                    sizeRange: [15,50],
-                    rotationRange: [0, 0],
-                    gridSize: 0,
-                    shape: 'pentagon',
-                    maskImage: maskImage,
-                    drawOutOfBound: false,
-                    // layoutAnimation: true,
-                    keepAspect: true,
-                    textStyle: {
-                        fontWeight: 'bold',
-                        color: function () {
-                            return ('rgb(' + [
-                                Math.round(Math.random() * 200) + 50,
-                                Math.round(Math.random() * 50),
-                                Math.round(Math.random() * 50) + 50
-                            ].join(',') + ')');
-                        },
-                    },
-                    emphasis: {
-                        textStyle: {
-                            color: '#528',
-                        },
-                    },
-                    data: Object.entries(data).map(([key, value]) => { return { name: key, value };}), 
-                },],
-       };
-       
-       console.log(wordcloud)
-        wordcloud.setOption(option);      
-       
-       };
+	window.onload = async () => {    
+	   const data = await fetch("/static/words/{{id}}.json").then((response) => response.json());
+	   console.log(data)
+	   const wordcloud = echarts.init(document.getElementById("wordcloud"));
+	   const maskImage = document.createElement("img");
+	   maskImage.src = "/static/images/logo.png";
+	   
+	   var option = {
+	         tooltip: {},
+	            series: [ {
+	               type: 'wordCloud',
+	                sizeRange: [15,50],
+	                rotationRange: [0, 0],
+	                gridSize: 0,
+	                shape: 'pentagon',
+	                maskImage: maskImage,
+	                drawOutOfBound: false,
+	                // layoutAnimation: true,
+	                keepAspect: true,
+	                textStyle: {
+	                    fontWeight: 'bold',
+	                    color: function () {
+	                        return ('rgb(' + [
+	                            Math.round(Math.random() * 200) + 50,
+	                            Math.round(Math.random() * 50),
+	                            Math.round(Math.random() * 50) + 50
+	                        ].join(',') + ')');
+	                    },
+	                },
+	                emphasis: {
+	                    textStyle: {
+	                        color: '#528',
+	                    },
+	                },
+	                data: Object.entries(data).map(([key, value]) => { return { name: key, value };}), 
+	            },],
+	   };
+	   
+	   console.log(wordcloud)
+	    wordcloud.setOption(option);      
+	   
+	   };
    </script>
+
 </body>
 </html>
